@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\blank-profile-picture.png" />
     <None Remove="Images\icon.ico" />
     <None Remove="Images\nasa-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\blank-profile-picture.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,15 +22,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Models\" />
-    <Folder Include="ViewsModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\icon.ico" />
     <Resource Include="Images\nasa-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\AboutUsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\AboutUsView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

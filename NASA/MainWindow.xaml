@@ -3,46 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NASA" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NASA" 
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{materialDesign:MaterialDesignFont}"
         Icon="Images/icon.ico"
-        Title="Nasa" Height="600" Width="960">
- 
+        Title="Nasa" MinHeight="600" MinWidth="900" Height="600" Width="960">
+    <Window.Resources>
+    </Window.Resources>
 
-    <Grid x:Name="mainGrid" Background="#FF333433">
+    <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Background="#FF851099" Height="30" MouseDown="Grid_MouseDown">
+        <Grid  Height="30" MouseDown="Grid_MouseDown" Background="{StaticResource MaterialDesignShadowBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,4,0">
+                <ToggleButton  x:Name="ButtunTheme" ToolTip="theme change" IsChecked="True" Width="40" Height="30"  Padding="0" Click="ButtunTheme_Click">
+                    <materialDesign:PackIcon Kind="ThemeLightDark"/>
+                </ToggleButton>
                 <Button  x:Name="ButtunMinimize" ToolTip="Minimize" Width="40" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Click="ButtonMinimize_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize"/>
                 </Button>
-                <Button x:Name="ButtonMaximize" ToolTip="Maximize" Width="40" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0"  Click="ButtonMaximaize_Click">
+                <Button x:Name="ButtonMaximize" ToolTip="Maximize" Width="40" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0"  Click="ButtonMaximaize_Click" >
                     <materialDesign:PackIcon Kind="WindowMaximize"/>
                 </Button>
-                <Button x:Name="ButtonClose" ToolTip="Close" Width="40" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0"  Click="ButtonClose_Click" Style="{StaticResource MaterialDesignFlatLightButton}">
+                <Button x:Name="ButtonClose" ToolTip="Close" Width="40" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0"  Click="ButtonClose_Click" >
                     <materialDesign:PackIcon Kind="WindowClose"/>
                 </Button>
             </StackPanel>
         </Grid>
         <StackPanel Margin="0,10,0,0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1">
-            <Rectangle Width="8" Fill="Transparent"></Rectangle>
+            <Rectangle Width="8" ></Rectangle>
             <Image Height="60" Width="80" Source="/NASA;component/Images/nasa-logo.png"/>
-            <TextBlock Text="NASA" FontSize="40" Foreground="White" FontWeight="DemiBold" VerticalAlignment="Center" />
+            <TextBlock Text="NASA" FontSize="40"  FontWeight="DemiBold" VerticalAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center" Background="Transparent" Grid.Row="1">
             <!-- 0 Home button-->
-            <Button Command="{Binding DisplayHomeView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="home" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 1 photo of the day button-->
-            <Button Command="{Binding DisplayTodayPhotoView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Astronomy Picture of the Day"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding PhotoView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Astronomy Picture of the Day"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="ImageFrame" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 2 solar system data button-->
@@ -60,11 +68,11 @@
         </StackPanel>
         <StackPanel Margin="0,10,20,0" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Background="Transparent" Grid.Row="1">
             <!-- 5 contact us button-->
-            <Button Command="{Binding DisplayContactUsView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Contact us"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="contact" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Contact us"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="Github" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 6 About us button-->
-            <Button Command="{Binding DisplayAboutUsView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="About us"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="about" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="About us"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="AboutCircleOutline" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <Rectangle Width="3" Fill="Transparent"></Rectangle>
@@ -72,9 +80,9 @@
 
         <!-- current user control -->
 
-        <materialDesign:Card Margin="10" Grid.Row="2" UniformCornerRadius="20">
+        <materialDesign:Card Margin="14" Grid.Row="2" UniformCornerRadius="20">
             <Grid>
-                <ContentControl Content="{Binding Path=Currents.CurrentVM, Source={x:Static Application.Current}}"></ContentControl>
+                <ContentControl Content="{Binding SelectedViewModel}"></ContentControl>
             </Grid>
         </materialDesign:Card>
     </Grid>

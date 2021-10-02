@@ -3,9 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:NASA" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:views="clr-namespace:NASA.Views"
+             xmlns:viewmodels="clr-namespace:NASA.ViewsModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
+            <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
+                <views:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AboutUsVM}">
+                <views:AboutUsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ContactUsVM}">
+                <views:ContactUsView/>
+            </DataTemplate>
+            
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Purple" SecondaryColor="Teal" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

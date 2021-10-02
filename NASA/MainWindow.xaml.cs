@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialDesignThemes.Wpf;
+using NASA.ViewsModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NASA
 {
@@ -20,9 +11,12 @@ namespace NASA
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
         #region top Bar buttons 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -40,6 +34,16 @@ namespace NASA
                 window.WindowState = System.Windows.WindowState.Normal;
             else
                 window.WindowState = System.Windows.WindowState.Maximized;
+        }
+        private void ButtunTheme_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                ITheme theme = _paletteHelper.GetTheme();
+                IBaseTheme baseTheme = (bool)(sender as ToggleButton).IsChecked ? new MaterialDesignDarkTheme() : new MaterialDesignLightTheme();
+                theme.SetBaseTheme(baseTheme);
+                _paletteHelper.SetTheme(theme);
+            }
+
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
