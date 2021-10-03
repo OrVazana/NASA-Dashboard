@@ -15,8 +15,7 @@ namespace NASA
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new MainViewModel();
+            DataContext = new MainVM();
         }
         #region top Bar buttons 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -29,11 +28,21 @@ namespace NASA
         }
         private void ButtonMaximaize_Click(object sender, RoutedEventArgs e)
         {
-            Window window = Application.Current.MainWindow;
-            if (window.WindowState == System.Windows.WindowState.Maximized)
-                window.WindowState = System.Windows.WindowState.Normal;
-            else
-                window.WindowState = System.Windows.WindowState.Maximized;
+            maxOrDflt();
+        }
+        private void maxOrDflt()
+        {
+            try
+            {
+                Window window = Application.Current.MainWindow;
+                if (window.WindowState == System.Windows.WindowState.Maximized)
+                    window.WindowState = System.Windows.WindowState.Normal;
+                else
+                    window.WindowState = System.Windows.WindowState.Maximized;
+            }
+            catch
+            {
+            }
         }
         private void ButtunTheme_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +56,20 @@ namespace NASA
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+            }
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+                maxOrDflt();
         }
         #endregion
-
     }
 }

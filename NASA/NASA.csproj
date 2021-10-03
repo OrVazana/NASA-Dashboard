@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\NASA.BE\NASA.BE.csproj" />
+    <ProjectReference Include="..\NASA.BL\NASA.BL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,9 +1,13 @@
-﻿namespace NASA.ViewsModels
+﻿using NASA.Models;
+
+namespace NASA.ViewsModels
 {
-    internal class TodayPhotoVM
+    public class TodayPhotoVM : BaseVM
     {
+        public TodayPhotoModel TodayPhotoModel { get; set; }
         public TodayPhotoVM()
         {
+        
         }
     }
 }

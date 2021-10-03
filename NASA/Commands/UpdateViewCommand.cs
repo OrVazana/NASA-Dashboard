@@ -10,9 +10,9 @@ namespace NASA.Commands
 {
     public class UpdateViewCommand :ICommand
     {
-        private MainViewModel viewModel;
+        private MainVM viewModel;
 
-        public UpdateViewCommand(MainViewModel viewModel)
+        public UpdateViewCommand(MainVM viewModel)
         {
             this.viewModel = viewModel;
         }
@@ -32,6 +32,8 @@ namespace NASA.Commands
                 viewModel.SelectedViewModel = new AboutUsVM();
             else if(parameter.ToString() == "contact")
                 viewModel.SelectedViewModel = new ContactUsVM();
+            else if(parameter.ToString()== "todayPhoto")
+                viewModel.SelectedViewModel = new TodayPhotoVM();
 
         }
     }

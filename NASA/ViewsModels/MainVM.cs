@@ -3,10 +3,10 @@ using System.Windows.Input;
 
 namespace NASA.ViewsModels
 {
-    public class MainViewModel : BaseVM
+    public class MainVM : BaseVM
     {
         private BaseVM _selectedViewModel;
-
+       
         public BaseVM SelectedViewModel
         {
             get { return _selectedViewModel; }
@@ -19,8 +19,9 @@ namespace NASA.ViewsModels
 
         public ICommand UpdateViewCommand { get; set; }
 
-        public MainViewModel()
+        public MainVM()
         {
+            SelectedViewModel = new HomeVM();
             UpdateViewCommand= new UpdateViewCommand(this);
         }
     }

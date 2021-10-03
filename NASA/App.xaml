@@ -12,15 +12,21 @@
             <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
                 <views:HomeView/>
             </DataTemplate>
+            <!--<DataTemplate DataType="{x:Type viewmodels:}">
+                <views:/>
+            </DataTemplate>-->
+            <DataTemplate DataType="{x:Type viewmodels:TodayPhotoVM}">
+                <views:TodayPhotoView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:AboutUsVM}">
                 <views:AboutUsView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:ContactUsVM}">
                 <views:ContactUsView/>
             </DataTemplate>
-            
+
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Purple" SecondaryColor="Teal" />
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Purple" SecondaryColor="LightBlue" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

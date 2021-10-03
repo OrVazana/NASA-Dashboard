@@ -10,7 +10,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{materialDesign:MaterialDesignFont}"
         Icon="Images/icon.ico"
-        Title="Nasa" MinHeight="600" MinWidth="900" Height="600" Width="960">
+        Title="Nasa" MinHeight="600" MinWidth="900" Height="600" Width="960" WindowStyle="None" AllowsTransparency="True" >
     <Window.Resources>
     </Window.Resources>
 
@@ -20,7 +20,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid  Height="30" MouseDown="Grid_MouseDown" Background="{StaticResource MaterialDesignShadowBrush}">
+        <Grid  Height="30" MouseDown="Grid_MouseDown" MouseLeftButtonDown="Grid_MouseLeftButtonDown"  Background="{StaticResource MaterialDesignShadowBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -50,26 +50,26 @@
                 <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 1 photo of the day button-->
-            <Button Command="{Binding PhotoView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Astronomy Picture of the Day"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="todayPhoto" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Astronomy Picture of the Day"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="ImageFrame" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 2 solar system data button-->
-            <Button Command="{Binding DisplaySolarSystemView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Solar system data"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="solarSystem" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Solar system data"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="Planet" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 3 NASA Image Library button-->
-            <Button Command="{Binding DisplayLibraryView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="NASA Image Library"    Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="library" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="NASA Image Library"    Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="PhotoLibrary" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 4 Asteroids status button-->
-            <Button Command="{Binding DisplayAstroidsView}" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Asteroids status"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <Button Command="{Binding UpdateViewCommand}" CommandParameter="asteroids" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Asteroids status"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="SqlQuery" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
         </StackPanel>
         <StackPanel Margin="0,10,20,0" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Background="Transparent" Grid.Row="1">
             <!-- 5 contact us button-->
             <Button Command="{Binding UpdateViewCommand}" CommandParameter="contact" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Contact us"   Style="{StaticResource MaterialDesignFlatLightButton}">
-                <materialDesign:PackIcon Kind="Github" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:PackIcon Kind="PaperAirplane" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 6 About us button-->
             <Button Command="{Binding UpdateViewCommand}" CommandParameter="about" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="About us"   Style="{StaticResource MaterialDesignFlatLightButton}">
