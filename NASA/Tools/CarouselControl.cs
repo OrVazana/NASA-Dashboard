@@ -12,7 +12,8 @@ namespace NASA.Tools
         public CarouselControl()
         {
             _timer.Tick += new EventHandler(TimerTick);
-            _timer.Interval = TimeSpan.FromMilliseconds(10); 
+            _timer.Interval = TimeSpan.FromMilliseconds(10);
+            SetElementPositions();
         }
         
         public DateTime _previousTime;
@@ -62,7 +63,7 @@ namespace NASA.Tools
             }
         }
 
-        private const double DEFAULT_LOOKDOWN_OFFSET = 30;
+        private const double DEFAULT_LOOKDOWN_OFFSET = 0;
         private const double MINIMUM_LOOKDOWN_OFFSET = -100;
         private const double MAXIMUM_LOOKDOWN_OFFSET = 100;
         private double _lookdownOffset = DEFAULT_LOOKDOWN_OFFSET;

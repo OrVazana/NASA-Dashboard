@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\blackSpace.jpg" />
     <None Remove="Images\blank-profile-picture.png" />
     <None Remove="Images\Earth.png" />
     <None Remove="Images\icon.ico" />
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\blackSpace.jpg" />
     <Resource Include="Images\blank-profile-picture.png" />
   </ItemGroup>
 
