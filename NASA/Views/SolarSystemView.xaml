@@ -25,35 +25,35 @@
 
         <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center"
                                RenderTransformOrigin="0.5,0.5" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
-            <Tools:SphereControl x:Name="EarthPlanet" Width="100" Height="60" InnerColorBrush="LimeGreen" OuterColorBrush="DarkGreen" Canvas.Left="268.82">
+            <Tools:SphereControl x:Name="EarthPlanet" Width="100" Height="60" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="268.82">
                 <Image Source="/Images/Earth.png" />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="MarsPlanet" Width="100" Height="60" InnerColorBrush="Blue" OuterColorBrush="DarkBlue" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="MarsPlanet" Width="100" Height="60" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="268.82">
                 <Image Source="/Images/mars.png" />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="JupiterPlanet" Width="100" Height="60" InnerColorBrush="Yellow" OuterColorBrush="Orange" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="JupiterPlanet" Width="100" Height="60" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="268.82">
                 <Image Source="/Images/Jupiter.png" />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="SaturnPlanet" Width="200" Height="60" InnerColorBrush="Magenta" OuterColorBrush="Purple" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="SaturnPlanet" Width="200" Height="60" InnerColorBrush="DarkOliveGreen" OuterColorBrush="Olive" Canvas.Left="268.82">
                 <Image Source="/Images/saturn.png"  />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="UranusPlanet" Width="100" Height="60" InnerColorBrush="Orange" OuterColorBrush="Red" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="UranusPlanet" Width="100" Height="60" InnerColorBrush="Aqua" OuterColorBrush="Turquoise" Canvas.Left="268.82">
                 <Image Source="/Images/URANUS.png" />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="NeptunePlanet" Width="100" Height="60" InnerColorBrush="Orange" OuterColorBrush="Red" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="NeptunePlanet" Width="100" Height="60" InnerColorBrush="Blue" OuterColorBrush="Turquoise" Canvas.Left="268.82">
                 <Image Source="/Images/NEPTUNE.png" />
             </Tools:SphereControl>
-            
-            <Tools:SphereControl x:Name="MercuryPlanet" Width="100" Height="60" InnerColorBrush="DimGray" OuterColorBrush="#FF000000" Canvas.Left="268.82">
+
+            <Tools:SphereControl x:Name="MercuryPlanet" Width="100" Height="60" InnerColorBrush="DimGray" OuterColorBrush="LightGray" Canvas.Left="268.82">
                 <Image Source="/Images/Mercury.png" />
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="VenusPlanet" Width="100" Height="60" InnerColorBrush="Red" OuterColorBrush="DarkRed" Canvas.Left="268.82">
+            <Tools:SphereControl x:Name="VenusPlanet" Width="100" Height="60" InnerColorBrush="Orange" OuterColorBrush="Orange" Canvas.Left="268.82">
                 <Image Source="/Images/Venus_new.png" />
             </Tools:SphereControl>
         </Tools:CarouselControl>
@@ -64,10 +64,10 @@
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock TextAlignment="Right" VerticalAlignment="Top" Margin="5" >Selected Planet:</TextBlock>
+            <TextBlock TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"  FontSize="20" Margin="-70,0,20,0" >Selected Planet:</TextBlock>
             <!--<Ellipse Grid.Column="1" Name="CurrentlySelectedEllipse" Width="40" Height="40" />-->
             <TextBlock Grid.Column="2" Name="CurrentlySelectedNameShadowTextBlock" TextAlignment="Left" FontSize="20" Margin="7,13,3,11" Foreground="Black" Opacity="0.5" FontWeight="Bold" ></TextBlock>
-            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameTextBlock" TextAlignment="Left" FontSize="20" VerticalAlignment="Center" Margin="5" FontWeight="Bold" ></TextBlock>
+            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameTextBlock" TextAlignment="Left" FontSize="20" VerticalAlignment="Center" Margin="-60" FontWeight="Bold" ></TextBlock>
 
         </Grid>
         <!--<Border Grid.ColumnSpan="3" Grid.RowSpan="3" BorderThickness="3" BorderBrush="{StaticResource StandardBorderBrush}"  />-->
