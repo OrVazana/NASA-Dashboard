@@ -1,5 +1,4 @@
-﻿using NASA.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,13 @@ using System.Windows.Shapes;
 namespace NASA.Views
 {
     /// <summary>
-    /// Interaction logic for TodayPhotoView.xaml
+    /// Interaction logic for AsteroidsView.xaml
     /// </summary>
-    public partial class TodayPhotoView : UserControl
+    public partial class AsteroidsView : UserControl
     {
-        public TodayPhotoView()
+        public AsteroidsView()
         {
             InitializeComponent();
-            DataContext = new TodayPhotoVM();
         }
     }
 }

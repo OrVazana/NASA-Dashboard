@@ -1,4 +1,4 @@
-﻿using NASA.ViewsModels;
+﻿using NASA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +36,10 @@ namespace NASA.Commands
                 viewModel.SelectedViewModel = new TodayPhotoVM();
             else if (parameter.ToString() == "solarSystem")
                 viewModel.SelectedViewModel = new SolarSystemVM();
+            else if (parameter.ToString() == "library")
+                viewModel.SelectedViewModel = new ImageLibrarySearchVM();
+            else if (parameter.ToString() == "asteroids")
+                viewModel.SelectedViewModel = new AsteroidsVM();
         }
     }
 }

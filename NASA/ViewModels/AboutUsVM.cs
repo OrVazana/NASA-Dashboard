@@ -1,4 +1,4 @@
-﻿namespace NASA.ViewsModels
+﻿namespace NASA.ViewModels
 {
     public class AboutUsVM : BaseVM
     {

@@ -1,5 +1,4 @@
-﻿using NASA.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,23 @@ using System.Windows.Shapes;
 namespace NASA.Views
 {
     /// <summary>
-    /// Interaction logic for TodayPhotoView.xaml
+    /// Interaction logic for ImageLibrarySearchView.xaml
     /// </summary>
-    public partial class TodayPhotoView : UserControl
+    public partial class ImageLibrarySearchView : UserControl
     {
-        public TodayPhotoView()
+        public ImageLibrarySearchView()
         {
             InitializeComponent();
-            DataContext = new TodayPhotoVM();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

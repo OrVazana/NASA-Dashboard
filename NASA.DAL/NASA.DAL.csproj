@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharpSigned" Version="105.2.3" />
   </ItemGroup>
 
   <ItemGroup>

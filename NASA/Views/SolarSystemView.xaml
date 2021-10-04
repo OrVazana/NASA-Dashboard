@@ -10,7 +10,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="../Images/blackSpace.jpg" Stretch="None"/>
+            <ImageBrush ImageSource="../Images/blackSpace.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -23,51 +23,51 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center"
-                               RenderTransformOrigin="0.5,0.5" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
-            <Tools:SphereControl x:Name="EarthPlanet" Width="100" Height="60" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="268.82">
-                <Image Source="/Images/Earth.png" />
+        <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               RenderTransformOrigin="0,0" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
+            <Tools:SphereControl x:Name="EarthPlanet" Height="100" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="600">
+                <Image Source="/Images/Earth.png" Width="100"/>
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="MarsPlanet" Width="100" Height="60" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="268.82">
-                <Image Source="/Images/mars.png" />
+            <Tools:SphereControl x:Name="MarsPlanet" Height="100" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="600">
+                <Image Source="/Images/mars.png" Width="100"/>
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="JupiterPlanet" Width="100" Height="60" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="268.82">
-                <Image Source="/Images/Jupiter.png" />
+            <Tools:SphereControl x:Name="JupiterPlanet" Height="100" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="600">
+                <Image Source="/Images/Jupiter.png" Width="130" />
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="SaturnPlanet" Width="200" Height="60" InnerColorBrush="DarkOliveGreen" OuterColorBrush="Olive" Canvas.Left="268.82">
-                <Image Source="/Images/saturn.png"  />
+            <Tools:SphereControl x:Name="SaturnPlanet" Height="100" InnerColorBrush="DarkOliveGreen" OuterColorBrush="Olive" Canvas.Left="600">
+                <Image Source="/Images/saturn.png"  Width="180"/>
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="UranusPlanet" Width="100" Height="60" InnerColorBrush="Aqua" OuterColorBrush="Turquoise" Canvas.Left="268.82">
-                <Image Source="/Images/URANUS.png" />
+            <Tools:SphereControl x:Name="UranusPlanet" Height="100" InnerColorBrush="Aqua" OuterColorBrush="Silver" Canvas.Left="600">
+                <Image Source="/Images/URANUS.png" Width="160" />
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="NeptunePlanet" Width="100" Height="60" InnerColorBrush="Blue" OuterColorBrush="Turquoise" Canvas.Left="268.82">
-                <Image Source="/Images/NEPTUNE.png" />
+            <Tools:SphereControl x:Name="NeptunePlanet" Height="100" InnerColorBrush="Blue" OuterColorBrush="Turquoise" Canvas.Left="600">
+                <Image Source="/Images/NEPTUNE.png" Width="130"/>
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="MercuryPlanet" Width="100" Height="60" InnerColorBrush="DimGray" OuterColorBrush="LightGray" Canvas.Left="268.82">
-                <Image Source="/Images/Mercury.png" />
+            <Tools:SphereControl x:Name="MercuryPlanet" Height="100" InnerColorBrush="DimGray" OuterColorBrush="LightGray" Canvas.Left="600">
+                <Image Source="/Images/Mercury.png" Width="90"/>
             </Tools:SphereControl>
 
-            <Tools:SphereControl x:Name="VenusPlanet" Width="100" Height="60" InnerColorBrush="Orange" OuterColorBrush="Orange" Canvas.Left="268.82">
-                <Image Source="/Images/Venus_new.png" />
+            <Tools:SphereControl x:Name="VenusPlanet" Height="100" InnerColorBrush="Orange" OuterColorBrush="Orange" Canvas.Left="600">
+                <Image Source="/Images/Venus_new.png" Width="150" />
             </Tools:SphereControl>
         </Tools:CarouselControl>
 
         <Grid Grid.Row="1" Grid.Column="1" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110" />
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"  FontSize="20" Margin="-70,0,20,0" >Selected Planet:</TextBlock>
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  FontSize="40">Selected Planet:</TextBlock>
             <!--<Ellipse Grid.Column="1" Name="CurrentlySelectedEllipse" Width="40" Height="40" />-->
-            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameShadowTextBlock" TextAlignment="Left" FontSize="20" Margin="7,13,3,11" Foreground="Black" Opacity="0.5" FontWeight="Bold" ></TextBlock>
-            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameTextBlock" TextAlignment="Left" FontSize="20" VerticalAlignment="Center" Margin="-60" FontWeight="Bold" ></TextBlock>
+            <!--<TextBlock Grid.Column="1" Name="CurrentlySelectedNameShadowTextBlock" TextAlignment="Center" FontSize="40" Foreground="Black" Opacity="0.5" FontWeight="Bold" ></TextBlock>-->
+            <TextBlock Grid.Column="1" Name="CurrentlySelectedNameTextBlock" TextAlignment="Center" FontSize="40" VerticalAlignment="Center"  FontWeight="Bold" ></TextBlock>
 
         </Grid>
         <!--<Border Grid.ColumnSpan="3" Grid.RowSpan="3" BorderThickness="3" BorderBrush="{StaticResource StandardBorderBrush}"  />-->

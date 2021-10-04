@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NASA.ViewsModels
+namespace NASA.ViewModels
 {
     public class SolarSystemVM : BaseVM
     {

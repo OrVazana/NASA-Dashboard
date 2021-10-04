@@ -1,7 +1,7 @@
 ﻿using NASA.Commands;
 using System.Windows.Input;
 
-namespace NASA.ViewsModels
+namespace NASA.ViewModels
 {
     public class MainVM : BaseVM
     {

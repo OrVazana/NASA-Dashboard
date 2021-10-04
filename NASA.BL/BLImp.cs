@@ -19,9 +19,12 @@ namespace NASA.BL
             IRepository = new Repository();
         }
 
+
+        #region fetch from db
         public TodayPhoto getTodayPhoto()
         {
-            throw new NotImplementedException();
+            return IRepository.GetTodayPhoto();
         }
+        #endregion
     }
 }

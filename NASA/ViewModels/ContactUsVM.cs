@@ -1,4 +1,4 @@
-﻿namespace NASA.ViewsModels
+﻿namespace NASA.ViewModels
 {
     internal class ContactUsVM : BaseVM
     {

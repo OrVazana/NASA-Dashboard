@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:NASA" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:views="clr-namespace:NASA.Views"
-             xmlns:viewmodels="clr-namespace:NASA.ViewsModels"
+             xmlns:VM="clr-namespace:NASA.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -13,19 +13,25 @@
                 <GradientStop Color="#00FFFFFF" Offset="0.5"/>
                 <GradientStop Color="#FF81A378" Offset="1.0"/>
             </LinearGradientBrush>
-            <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
+            <DataTemplate DataType="{x:Type VM:HomeVM}">
                 <views:HomeView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:SolarSystemVM}">
-                <views:SolarSystemView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:TodayPhotoVM}">
+            <DataTemplate DataType="{x:Type VM:TodayPhotoVM}">
                 <views:TodayPhotoView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:AboutUsVM}">
+            <DataTemplate DataType="{x:Type VM:SolarSystemVM}">
+                <views:SolarSystemView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type VM:ImageLibrarySearchVM}">
+                <views:ImageLibrarySearchView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type VM:AsteroidsVM}">
+                <views:AsteroidsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type VM:AboutUsVM}">
                 <views:AboutUsView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:ContactUsVM}">
+            <DataTemplate DataType="{x:Type VM:ContactUsVM}">
                 <views:ContactUsView/>
             </DataTemplate>
 

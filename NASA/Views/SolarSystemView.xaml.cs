@@ -59,17 +59,15 @@ namespace NASA.Views
             SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
             //if (CurrentlySelectedEllipse != null)
                 //CurrentlySelectedEllipse.Fill = selected.SphereFill;
-            if ((CurrentlySelectedNameTextBlock != null) && (CurrentlySelectedNameShadowTextBlock != null))
+            if ((CurrentlySelectedNameTextBlock != null))
             {
                 CurrentlySelectedNameTextBlock.Foreground = selected.SphereFill;
                 CurrentlySelectedNameTextBlock.Text = selected.Name;
-                CurrentlySelectedNameShadowTextBlock.Text = selected.Name;
             }
         }
 
+
+
         #endregion
-
-
-
     }
 }

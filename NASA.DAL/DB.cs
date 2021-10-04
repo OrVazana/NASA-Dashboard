@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Net.Http;
 
 namespace NASA.DAL
 {
     class DB : DbContext
     {
-        public DB():base("NASA-DB2021")
+        static HttpClient client = new HttpClient();
+        public DB() : base("NASA-DB2021")
         {
 
         }
-        //public DbSet<> astroids
     }
 }

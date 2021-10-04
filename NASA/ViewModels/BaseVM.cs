@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace NASA.ViewsModels
+namespace NASA.ViewModels
 {
     public class BaseVM : INotifyPropertyChanged
     {
