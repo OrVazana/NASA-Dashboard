@@ -8,8 +8,16 @@
 
   <ItemGroup>
     <None Remove="Images\blank-profile-picture.png" />
+    <None Remove="Images\Earth.png" />
     <None Remove="Images\icon.ico" />
+    <None Remove="Images\Jupiter.png" />
+    <None Remove="Images\mars.png" />
+    <None Remove="Images\Mercury.png" />
     <None Remove="Images\nasa-logo.png" />
+    <None Remove="Images\NEPTUNE.png" />
+    <None Remove="Images\saturn.png" />
+    <None Remove="Images\URANUS.png" />
+    <None Remove="Images\Venus_new.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +35,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Earth.png" />
     <Resource Include="Images\icon.ico" />
+    <Resource Include="Images\Jupiter.png" />
+    <Resource Include="Images\mars.png" />
+    <Resource Include="Images\Mercury.png" />
     <Resource Include="Images\nasa-logo.png" />
+    <Resource Include="Images\NEPTUNE.png" />
+    <Resource Include="Images\saturn.png" />
+    <Resource Include="Images\URANUS.png" />
+    <Resource Include="Images\Venus_new.png" />
   </ItemGroup>
 
   <ItemGroup>

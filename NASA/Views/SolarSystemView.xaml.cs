@@ -17,7 +17,6 @@ namespace NASA.Views
             InitializeComponent();
         }
         #region Carousel
-
         private void CarouselSpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ExampleCarouselControl.RotationSpeed = e.NewValue;
@@ -58,8 +57,8 @@ namespace NASA.Views
         private void ExampleCarouselControl_OnElementSelected(object sender)
         {
             SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
-            if (CurrentlySelectedEllipse != null)
-                CurrentlySelectedEllipse.Fill = selected.SphereFill;
+            //if (CurrentlySelectedEllipse != null)
+                //CurrentlySelectedEllipse.Fill = selected.SphereFill;
             if ((CurrentlySelectedNameTextBlock != null) && (CurrentlySelectedNameShadowTextBlock != null))
             {
                 CurrentlySelectedNameTextBlock.Foreground = selected.SphereFill;
