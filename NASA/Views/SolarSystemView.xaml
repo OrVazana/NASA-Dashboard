@@ -4,8 +4,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA.Views" xmlns:tools="clr-namespace:NASA.Tools"
+              xmlns:Tools="clr-namespace:NASA.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" >
+                        <Run Text="     The Carousel Control can be used for selecting items." />
+                        <LineBreak />
+                        <Run Text="     (Click on a sphere below)" />
+        </TextBlock>
+
+        <Tools:CarouselControl Grid.Row="1" Grid.ColumnSpan="2" x:Name="ExampleCarouselControl" Width="600" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
+
+            <Tools:SphereControl x:Name="BlackSphere" Width="60" Height="60" InnerColorBrush="DimGray" OuterColorBrush="#FF000000" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="RedSphere" Width="60" Height="60" InnerColorBrush="Red" OuterColorBrush="DarkRed" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="GreenSphere" Width="60" Height="60" InnerColorBrush="LimeGreen" OuterColorBrush="DarkGreen" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="BlueSphere" Width="60" Height="60" InnerColorBrush="Blue" OuterColorBrush="DarkBlue" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="YellowSphere" Width="60" Height="60" InnerColorBrush="Yellow" OuterColorBrush="Orange" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="PurpleSphere" Width="60" Height="60" InnerColorBrush="Magenta" OuterColorBrush="Purple" Canvas.Left="268.82"/>
+            <Tools:SphereControl x:Name="OrangeSphere" Width="60" Height="60" InnerColorBrush="Orange" OuterColorBrush="Red" Canvas.Left="268.82"/>
+
+        </Tools:CarouselControl>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock TextAlignment="Right" VerticalAlignment="Top" Margin="5" >Selected Sphere:</TextBlock>
+            <Ellipse Grid.Column="1" Name="CurrentlySelectedEllipse" Width="40" Height="40" />
+            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameShadowTextBlock" TextAlignment="Left" FontSize="20" Margin="7,13,3,11" Foreground="Black" Opacity="0.5" FontWeight="Bold" ></TextBlock>
+            <TextBlock Grid.Column="2" Name="CurrentlySelectedNameTextBlock" TextAlignment="Left" FontSize="20" VerticalAlignment="Center" Margin="5" FontWeight="Bold" ></TextBlock>
+
+        </Grid>
+        <Border Grid.ColumnSpan="2" Grid.RowSpan="3" BorderThickness="3" BorderBrush="{StaticResource StandardBorderBrush}"  />
+
     </Grid>
 </UserControl>

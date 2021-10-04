@@ -8,13 +8,17 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            
+            <LinearGradientBrush x:Key="StandardBorderBrush" EndPoint="0.0,0.0" StartPoint="1,1">
+                <GradientStop Color="#FF81A378" Offset="0.0"/>
+                <GradientStop Color="#00FFFFFF" Offset="0.5"/>
+                <GradientStop Color="#FF81A378" Offset="1.0"/>
+            </LinearGradientBrush>
             <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
                 <views:HomeView/>
             </DataTemplate>
-            <!--<DataTemplate DataType="{x:Type viewmodels:}">
-                <views:/>
-            </DataTemplate>-->
+            <DataTemplate DataType="{x:Type viewmodels:SolarSystemVM}">
+                <views:SolarSystemView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:TodayPhotoVM}">
                 <views:TodayPhotoView/>
             </DataTemplate>

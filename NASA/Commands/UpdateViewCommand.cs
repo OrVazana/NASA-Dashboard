@@ -23,7 +23,7 @@ namespace NASA.Commands
         {
             return true;
         }
-
+        //solarSystem
         public void Execute(object parameter)
         {
             if (parameter.ToString() == "home")
@@ -34,7 +34,8 @@ namespace NASA.Commands
                 viewModel.SelectedViewModel = new ContactUsVM();
             else if(parameter.ToString()== "todayPhoto")
                 viewModel.SelectedViewModel = new TodayPhotoVM();
-
+            else if (parameter.ToString() == "solarSystem")
+                viewModel.SelectedViewModel = new SolarSystemVM();
         }
     }
 }

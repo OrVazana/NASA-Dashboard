@@ -12,9 +12,9 @@ namespace NASA.Tools
         public CarouselControl()
         {
             _timer.Tick += new EventHandler(TimerTick);
-            _timer.Interval = TimeSpan.FromMilliseconds(10);
+            _timer.Interval = TimeSpan.FromMilliseconds(10); 
         }
-
+        
         public DateTime _previousTime;
         public DateTime _currentTime;
 
