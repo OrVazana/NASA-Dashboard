@@ -25,6 +25,10 @@ namespace NASA.BL
         {
             return IRepository.GetTodayPhoto();
         }
+        //public Planet getSelectedPlanet()
+        //{
+        //    return IRepository.getSelectedPlanet();
+        //}
         #endregion
     }
 }

@@ -26,7 +26,7 @@
                                  materialDesign:HintAssist.Hint="Search for astroid Data" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center" 
-                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged"/>
+                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
                 <Button Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  Style="{StaticResource MaterialDesignFlatLightButton}">
                     <materialDesign:PackIcon Kind="Search" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Button>

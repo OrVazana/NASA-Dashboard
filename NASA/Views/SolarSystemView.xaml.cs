@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using NASA.ViewModels;
 
 namespace NASA.Views
 {
@@ -15,6 +16,7 @@ namespace NASA.Views
         public SolarSystemView()
         {
             InitializeComponent();
+            DataContext = new SolarSystemVM();
         }
         #region Carousel
         private void CarouselSpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -56,11 +58,12 @@ namespace NASA.Views
 
         private void ExampleCarouselControl_OnElementSelected(object sender)
         {
+           
+
             SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
-            //if (CurrentlySelectedEllipse != null)
-                //CurrentlySelectedEllipse.Fill = selected.SphereFill;
+           
             if ((CurrentlySelectedNameTextBlock != null))
-            {
+            {  
                 CurrentlySelectedNameTextBlock.Foreground = selected.SphereFill;
                 CurrentlySelectedNameTextBlock.Text = selected.Name;
             }
