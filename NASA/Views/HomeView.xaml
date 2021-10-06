@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{materialDesign:MaterialDesignFont}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -13,8 +16,14 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" x:Name="fsdf" TextAlignment="Justify" FontSize="30" Width="780">
+                Our project allows you to observe the solar system with <LineBreak/> all of it's details from a different 
+                angle
+            </TextBlock>
 
-            <Grid Margin="10" Grid.Column="0" Background="DarkBlue">
+                <!--<TextBlock x:Name="explanation" HorizontalAlignment="Left" Text="fsdfsd"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="0,10,0,40" Grid.ColumnSpan="2" Width="780"/>-->
+
+            <!--<Grid Margin="10" Grid.Column="0" Background="DarkBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -29,7 +38,7 @@
                 </Rectangle>
                 <StackPanel Margin="20 50" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
                 </StackPanel>
-            </Grid>
+            </Grid>-->
         </Grid>
     </Grid>
 </UserControl>

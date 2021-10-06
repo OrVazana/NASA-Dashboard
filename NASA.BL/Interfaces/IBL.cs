@@ -10,5 +10,6 @@ namespace NASA.BL.Interfaces
     public interface IBL
     {
         TodayPhoto getTodayPhoto();
+        Planet getSelectedPlanet(string name);
     }
 }

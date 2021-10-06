@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using NASA.BE;
@@ -9,6 +10,31 @@ namespace NASA.DAL
 {
     public class Repository : IRepository
     {
+        public List<Planet> planets { get; set; }
+        public Repository()
+        {
+            var planets = new List<Planet> { 
+            new Planet() {id=1,Name= "mercuriy",Description= "big big planet" },
+            new Planet() {id=2,Name= "mars",Description= "big big planet"},
+            new Planet() {id=3,Name= "earth",Description= "big big planet"},
+            new Planet() {id=4,Name= "mars",Description= "big big planet"},
+            new Planet() {id=5,Name= "seturan",Description= "big big planet"},
+            new Planet() {id=6,Name= "jupiter",Description= "big big planet"},
+            new Planet() {id=7,Name= "aurenus",Description= "big big planet"},
+            new Planet() {id=8,Name= "nepton",Description= "big big planet"}
+            };
+
+
+        }
+        public Planet getSelectedPlanet(string name)
+        {         
+            foreach (var item in planets)
+            {
+                if (name == item.Name)
+                    return item;
+            }
+            return planets[0];
+        }
 
         public TodayPhoto GetTodayPhoto()
         {

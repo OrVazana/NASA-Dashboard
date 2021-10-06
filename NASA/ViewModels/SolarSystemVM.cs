@@ -1,4 +1,5 @@
 ﻿using NASA.BE;
+using NASA.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,21 @@ namespace NASA.ViewModels
 {
     public class SolarSystemVM : BaseVM
     {
-        public SolarSystemVM selectedPlanetModel { get; set; }
+        public SolarSystemModel SolarSystemModel { get; set; }
 
-        public Planet selectedPlanet { get; }
+        public Planet selectedPlanet { get; set; }
 
-        //public SolarSystemVM()
-        //{
-        //    selectedPlanetModel = new getSelectedPlanet();
-        //    selectedPlanet = selectedPlanetModel.getSelectedPlanet();
-        //}
+        public SolarSystemVM()
+        {
+            SolarSystemModel = new SolarSystemModel();
+            
+        }
+        
+        public Planet getSelectedPlanet(string name)
+        {
+            selectedPlanet = SolarSystemModel.getSelectedPlanet(name);
+            return selectedPlanet;
+        }
+
     }
 }

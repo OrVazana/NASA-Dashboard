@@ -17,9 +17,9 @@ namespace NASA.Models
         {
             BL = new BLImp();
         }
-        //public Planet getSelectedPlanet()
-        //{
-        //    return BL.getSelectedPlanet();
-        //}
+        public Planet getSelectedPlanet(string name)
+        {
+            return BL.getSelectedPlanet(name);
+        }
     }
 }
