@@ -7,8 +7,8 @@
               xmlns:Tools="clr-namespace:NASA.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" >
+        <Grid Height="780">
 
             <Grid.Background>
                 <ImageBrush ImageSource="../Images/blackSpace.jpg" Stretch="UniformToFill"/>
@@ -75,7 +75,7 @@
             </Grid>
 
             <TextBlock x:Name="earthtxt" Grid.Row="2" Grid.Column="1" Text="{Binding selectedPlanet.Description, Mode=Default}" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="5" HorizontalAlignment="Center">
-                bla bla bla
+                bla bla bla<LineBreak/>
                 bla bla bla
             </TextBlock>
 

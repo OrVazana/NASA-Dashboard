@@ -14,14 +14,14 @@ namespace NASA.DAL
         public Repository()
         {
             var planets = new List<Planet> { 
-            new Planet() {id=1,Name= "mercuriy",Description= "big big planet" },
-            new Planet() {id=2,Name= "mars",Description= "big big planet"},
-            new Planet() {id=3,Name= "earth",Description= "big big planet"},
-            new Planet() {id=4,Name= "mars",Description= "big big planet"},
-            new Planet() {id=5,Name= "seturan",Description= "big big planet"},
-            new Planet() {id=6,Name= "jupiter",Description= "big big planet"},
-            new Planet() {id=7,Name= "aurenus",Description= "big big planet"},
-            new Planet() {id=8,Name= "nepton",Description= "big big planet"}
+            new Planet() {id=1,Name= "mercuriy",Description= "mercuriy big planet" },
+            new Planet() {id=2,Name= "mars",Description= "mars big planet"},
+            new Planet() {id=3,Name= "earth",Description= "earth big planet"},
+            new Planet() {id=4,Name= "mars",Description= "mars big planet"},
+            new Planet() {id=5,Name= "seturan",Description= "seturan big planet"},
+            new Planet() {id=6,Name= "jupiter",Description= "jupiter big planet"},
+            new Planet() {id=7,Name= "aurenus",Description= "aurenus big planet"},
+            new Planet() {id=8,Name= "nepton",Description= "nepton big planet"}
             };
 
 
