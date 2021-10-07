@@ -24,7 +24,7 @@
                 <Bold Foreground="Purple">•</Bold> Watch APOD (Astronomy Picture of the Day).<LineBreak/><LineBreak/>
                 <Bold Foreground="Purple">•</Bold> See data profile on any each of the 8 planets in the solar system.<LineBreak/><LineBreak/>
                 <Bold Foreground="Purple">•</Bold> Search for images in the NASA library.<LineBreak/><LineBreak/>
-                <Bold Foreground="Purple">•</Bold> see Asteroids's status.<LineBreak/>
+                <Bold Foreground="Purple">•</Bold> See Asteroids' status.<LineBreak/>
             </TextBlock>
 
                 <!--<TextBlock x:Name="explanation" HorizontalAlignment="Left" Text="fsdfsd"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="0,10,0,40" Grid.ColumnSpan="2" Width="780"/>-->
