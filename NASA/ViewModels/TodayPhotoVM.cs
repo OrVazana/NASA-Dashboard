@@ -1,5 +1,6 @@
 ﻿using NASA.BE;
 using NASA.Models;
+using NASA.Tools;
 
 namespace NASA.ViewModels
 {
@@ -7,12 +8,13 @@ namespace NASA.ViewModels
     {
         public TodayPhotoModel TodayPhotoModel { get; set; }
 
-        public TodayPhoto TodayPhoto { get;}
+        public NotifyTaskCompletion<TodayPhoto> TodayPhoto { get; private set; }
 
         public TodayPhotoVM()
         {
             TodayPhotoModel = new TodayPhotoModel();
-            TodayPhoto = TodayPhotoModel.getTodayPhoto();
+
+            TodayPhoto = new NotifyTaskCompletion<TodayPhoto>(TodayPhotoModel.getTodayPhoto());
         }
     }
 }

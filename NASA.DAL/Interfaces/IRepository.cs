@@ -5,7 +5,9 @@ namespace NASA.DAL.Interfaces
 {
     public interface IRepository
     {
-        public TodayPhoto GetTodayPhoto();
+        public Task<TodayPhoto> GetTodayPhoto();
+        public Task<LibrarySearch> getLibrarySearchResult();
+        
         Planet getSelectedPlanet(string name);
         //Task<string> GetResponseJSon(string apiUrl, string apiKey);
     }

@@ -17,7 +17,7 @@ namespace NASA.Models
         {
             BL = new BLImp();
         }
-        public TodayPhoto getTodayPhoto()
+        public Task<TodayPhoto> getTodayPhoto()
         {
             return BL.getTodayPhoto();
         }

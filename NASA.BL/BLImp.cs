@@ -21,9 +21,14 @@ namespace NASA.BL
 
 
         #region fetch from db
-        public TodayPhoto getTodayPhoto()
+        public Task<TodayPhoto> getTodayPhoto()
         {
             return IRepository.GetTodayPhoto();
+        }
+
+        public Task<LibrarySearch> getLibrarySearchResult()
+        {
+            return IRepository.GetLibrarySearchResult();
         }
 
         public Planet getSelectedPlanet(string name)

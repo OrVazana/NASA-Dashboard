@@ -28,7 +28,7 @@
             <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center"
                                RenderTransformOrigin="0,0" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
                 <Tools:SphereControl x:Name="EarthPlanet" Height="100" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="600">
-                    <Image Source="/Images/Earth.png" Width="100"/>
+                    <Image Source="/Images/Earth.png" Width="100" />
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="MarsPlanet" Height="100" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="600">
