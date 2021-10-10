@@ -28,11 +28,19 @@
             <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center"
                                RenderTransformOrigin="0,0" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
                 <Tools:SphereControl x:Name="EarthPlanet" Height="100" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="600">
+<<<<<<< HEAD
                     <Image Source="/Images/Earth.png" Width="100" />
+=======
+                    <Image Source="/Images/Earth.png" Width="100">
+                        <!--<Image.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding PlanetDescriptionCommand}" CommandParameter="EarthPlanet"/>
+                        </Image.InputBindings>-->
+                    </Image>
+>>>>>>> 09ee9197e08d0222ee4389d73c325b2ec8e2a336
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="MarsPlanet" Height="100" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="600">
-                    <Image Source="/Images/mars.png" Width="100"/>
+                    <Image Source="/Images/mars.png" Width="100" MouseDown="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="JupiterPlanet" Height="100" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="600">
@@ -74,7 +82,7 @@
                 <RadioButton Visibility="Hidden" Name="HorizontalSelectionRadio" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Horizontal" GroupName="Orientation" Checked="HorizontalOrientationRadioButton_Checked" IsChecked="True" />
             </Grid>
 
-            <TextBlock x:Name="earthtxt" Grid.Row="2" Grid.Column="1" Text="{Binding selectedPlanet.Description, Mode=Default}" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="5" HorizontalAlignment="Center">
+            <TextBlock x:Name="selectedDescription" Grid.Row="2" Grid.Column="1" Text="{Binding }" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="5" HorizontalAlignment="Center">
                 bla bla bla<LineBreak/>
                 bla bla bla
             </TextBlock>
