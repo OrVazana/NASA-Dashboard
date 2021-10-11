@@ -13,10 +13,12 @@ namespace NASA.Views
     /// </summary>
     public partial class SolarSystemView : UserControl
     {
+        public SolarSystemVM VM = new SolarSystemVM(); 
         public SolarSystemView()
         {
             InitializeComponent();
-            DataContext = new SolarSystemVM();
+            
+            DataContext = VM;
         }
         #region Carousel
         //private void CarouselSpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -72,6 +74,7 @@ namespace NASA.Views
         {
             SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
             //selected.Name
+            selectedDescription.Text = VM.getSelectedPlanet(selected.Name).Description;
             //selectedDescription.Text = selected.Name;
         }
     }
