@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using NASA.BE;
 using NASA.DAL.Interfaces;
@@ -77,9 +79,9 @@ namespace NASA.DAL
         }
 
         //NASA Image and Video Library
-        public async Task<LibrarySearch> GetLibrarySearch(string search)
+        public async Task<List<libraryImage>> GetLibrarySearchResult(string search)
         {
-            var url ="https://images-api.nasa.gov"+search;
+            var url = "https://images-api.nasa.gov/search?media_type=image&q=" + search;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
@@ -88,7 +90,13 @@ namespace NASA.DAL
                 {
                     string strResult = await response.Content.ReadAsStringAsync();
                     LibrarySearch myDeserializedClass = JsonConvert.DeserializeObject<LibrarySearch>(strResult);
-                    return myDeserializedClass;
+                    List<libraryImage> items = new List<libraryImage>();
+                    foreach (var item in myDeserializedClass.collection.items)
+                    {
+                        items.Add(new libraryImage(item.links[0].href, item.data[0].title, item.data[0].description));
+                        Trace.WriteLine(item.data[0].title);
+                    }
+                    return items;
                 }
                 else
                     return null;

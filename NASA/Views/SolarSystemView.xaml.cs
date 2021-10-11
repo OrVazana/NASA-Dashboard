@@ -49,12 +49,12 @@ namespace NASA.Views
         //    ExampleCarouselControl.ReInitialize();
         //}
 
-        //private void HorizontalOrientationRadioButton_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    ExampleCarouselControl.Width = 600;
-        //    ExampleCarouselControl.Height = 0;
-        //    ExampleCarouselControl.ReInitialize();
-        //}
+        private void HorizontalOrientationRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ExampleCarouselControl.Width = 600;
+            ExampleCarouselControl.Height = 0;
+            ExampleCarouselControl.ReInitialize();
+        }
 
         private void ExampleCarouselControl_OnElementSelected(object sender)
         {

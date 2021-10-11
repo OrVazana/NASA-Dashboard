@@ -56,4 +56,18 @@ namespace NASA.BE
     {
         public Collection collection { get; set; }
     }
+
+    public class libraryImage
+    {
+        public string urlImage { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+
+        public libraryImage(string urlImage, string title, string description)
+        {
+            this.urlImage = urlImage;
+            this.title = title;
+            this.description = description;
+        }
+    }
 }

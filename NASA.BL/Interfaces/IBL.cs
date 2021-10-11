@@ -9,7 +9,8 @@ namespace NASA.BL.Interfaces
 {
     public interface IBL
     {
-        Task<TodayPhoto> getTodayPhoto();
-        Planet getSelectedPlanet(string name);
+        public Task<TodayPhoto> getTodayPhoto();
+        public Task<List<libraryImage>> GetLibrarySearchResult(string search);
+        public Planet getSelectedPlanet(string name);
     }
 }

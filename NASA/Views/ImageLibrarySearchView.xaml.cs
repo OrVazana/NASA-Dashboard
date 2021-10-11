@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using NASA.ViewModels;
 
 namespace NASA.Views
 {
@@ -20,19 +10,17 @@ namespace NASA.Views
     /// </summary>
     public partial class ImageLibrarySearchView : UserControl
     {
+        ImageLibrarySearchVM Current { get; set; }
         public ImageLibrarySearchView()
         {
             InitializeComponent();
+            Current = new ImageLibrarySearchVM();
+            DataContext = Current;
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            string search = searchBox.Text;
+            Current.search(search);
         }
     }
 }

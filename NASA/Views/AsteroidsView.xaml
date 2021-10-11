@@ -23,12 +23,13 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="1"  BorderThickness="0" VerticalAlignment="Center"  FontSize="14"
-                                 materialDesign:HintAssist.Hint="Search for astroid Data" 
-                                 materialDesign:HintAssist.HintOpacity="0.6"
+                         materialDesign:HintAssist.Hint="Search for astroid Data" 
+                         materialDesign:HintAssist.HintOpacity="0.6"
+                         materialDesign:TextFieldAssist.UnderlineCornerRadius="100"
                                  HorizontalContentAlignment="Center" 
                                  Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  Style="{StaticResource MaterialDesignFlatLightButton}">
-                    <materialDesign:PackIcon Kind="Search" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource MaterialDesignFlatLightButton}">
+                    <materialDesign:PackIcon Kind="Search" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </Button>
             </Grid>
         </Border>
@@ -45,8 +46,8 @@
             </DataGrid>
         </materialDesign:Card>
 
-        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0"  FlowDirection="RightToLeft"  FontSize="16">
-            <Run Text="סהכ תוצאות: "/>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center"  Margin="100,0,0,0"  FontSize="16">
+            <Run Text="total: "/>
             <Run Text="{Binding Count, Mode=OneWay}"/>
         </TextBlock>
 

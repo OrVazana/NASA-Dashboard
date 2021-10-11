@@ -25,12 +25,6 @@ namespace NASA.Views
         {
             InitializeComponent();
             DataContext = new TodayPhotoVM();
-            ProgressBar prog = new ProgressBar();
-
-        }
-
-        private void Image_Loaded(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

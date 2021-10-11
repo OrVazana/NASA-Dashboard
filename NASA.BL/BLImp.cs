@@ -26,9 +26,9 @@ namespace NASA.BL
             return IRepository.GetTodayPhoto();
         }
 
-        public Task<LibrarySearch> getLibrarySearchResult()
+        public Task<List<libraryImage>> GetLibrarySearchResult(string search)
         {
-            return IRepository.GetLibrarySearchResult();
+            return IRepository.GetLibrarySearchResult(search);
         }
 
         public Planet getSelectedPlanet(string name)
