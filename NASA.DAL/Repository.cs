@@ -102,5 +102,29 @@ namespace NASA.DAL
                     return null;
             }
         }
+
+        //Astroids
+        public async Task<List<Asteroid>> GetAsteroidsFilteredResult()
+        {
+            var url = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=WsYeuuaywUAJILhko8CfVQwj38v867sG32f8QseL";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string strResult = await response.Content.ReadAsStringAsync();
+                    AsteroidsRoot myDeserializedClass = JsonConvert.DeserializeObject<AsteroidsRoot>(strResult);
+                    List<Asteroid> items = new List<Asteroid>();
+                    foreach (var item in myDeserializedClass.near_earth_objects)
+                    {
+                        items.Add(new Asteroid(item.id,item.name,item.absolute_magnitude_h, item.designation,item.is_potentially_hazardous_asteroid,item.estimated_diameter.kilometers));
+                    }
+                    return items;
+                }
+                else
+                    return null;
+            }
+        }
     }
 }

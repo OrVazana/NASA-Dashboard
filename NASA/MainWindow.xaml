@@ -72,9 +72,9 @@
                 <materialDesign:PackIcon Kind="PaperAirplane" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>
             <!-- 6 About us button-->
-            <Button Command="{Binding UpdateViewCommand}" CommandParameter="about" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="About us"   Style="{StaticResource MaterialDesignFlatLightButton}">
+            <!--<Button Command="{Binding UpdateViewCommand}" CommandParameter="about" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="About us"   Style="{StaticResource MaterialDesignFlatLightButton}">
                 <materialDesign:PackIcon Kind="AboutCircleOutline" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
+            </Button>-->
             <Rectangle Width="3" Fill="Transparent"></Rectangle>
         </StackPanel>
 

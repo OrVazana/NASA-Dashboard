@@ -11,6 +11,7 @@ namespace NASA.BL.Interfaces
     {
         public Task<TodayPhoto> getTodayPhoto();
         public Task<List<libraryImage>> GetLibrarySearchResult(string search);
+        public Task<List<Asteroid>> GetAsteroidsFilteredResult();
         public Planet getSelectedPlanet(string name);
     }
 }

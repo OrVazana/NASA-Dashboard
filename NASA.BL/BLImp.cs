@@ -36,6 +36,11 @@ namespace NASA.BL
             return IRepository.getSelectedPlanet(name);
         }
 
+        public Task<List<Asteroid>> GetAsteroidsFilteredResult()
+        {
+            return IRepository.GetAsteroidsFilteredResult();
+        }
+
 
         #endregion
     }

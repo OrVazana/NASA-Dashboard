@@ -135,5 +135,26 @@ namespace NASA.BE
         public Page page { get; set; }
         public List<NearEarthObject> near_earth_objects { get; set; }
     }
+
+    public class Asteroid
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public double absolute_magnitude_h { get; set; }
+        public string designation { get; set; }
+        public bool is_potentially_hazardous_asteroid { get; set; }
+        public Kilometers kilometers { get; set; }
+
+        public Asteroid(string id, string name, double absolute_magnitude_h, string designation, bool is_potentially_hazardous_asteroid, Kilometers kilometers)
+        {
+            this.id = id;
+            this.name = name;
+            this.absolute_magnitude_h = absolute_magnitude_h;
+            this.designation = designation;
+            this.is_potentially_hazardous_asteroid = is_potentially_hazardous_asteroid;
+            this.kilometers = kilometers;
+        }
+
+    }
 }
 

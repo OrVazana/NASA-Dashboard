@@ -10,7 +10,9 @@ namespace NASA.DAL.Interfaces
         public Task<TodayPhoto> GetTodayPhoto();
         //library api
         public Task<List<libraryImage>> GetLibrarySearchResult(string search);
-        
+        public Task<List<Asteroid>> GetAsteroidsFilteredResult();
+
+
         Planet getSelectedPlanet(string name);
         //Task<string> GetResponseJSon(string apiUrl, string apiKey);
     }

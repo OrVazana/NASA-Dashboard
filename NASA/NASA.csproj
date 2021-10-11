@@ -49,17 +49,4 @@
     <Resource Include="Images\Venus_new.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Views\AboutUsView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\AboutUsView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>
