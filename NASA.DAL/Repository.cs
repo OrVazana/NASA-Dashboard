@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -8,7 +9,6 @@ using System.Threading.Tasks;
 using NASA.BE;
 using NASA.DAL.Interfaces;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace NASA.DAL
 {
@@ -32,6 +32,14 @@ namespace NASA.DAL
             };
         }
 
+        public List<Planet> GetAllPlanets()
+        {
+            List<Planet> result = new List<Planet>();
+            var context = new DB();
+            result = context.Planets.ToList();
+            return result;
+        }
+
         public Planet getSelectedPlanet(string name)
         {         
             foreach (var item in planets)
@@ -41,23 +49,7 @@ namespace NASA.DAL
             }
             return planets[0];
         }
-        
-        //apod api
-        //public TodayPhoto GetTodayPhoto()
-        //{
-        //    //string apiKey = "WsYeuuaywUAJILhko8CfVQwj38v867sG32f8QseL";
-        //    //string apodApi = "https://api.nasa.gov/planetary/apod?api_key=";
-        //    var client = new RestClient("https://api.nasa.gov/");
-        //    var request = new RestRequest("planetary/apod", Method.GET);
-        //    request.AddParameter("api_key", "WsYeuuaywUAJILhko8CfVQwj38v867sG32f8QseL");
-        //    var res = client.Execute(request);
-        //    if (res.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        TodayPhoto myDeserializedClass = JsonConvert.DeserializeObject<TodayPhoto>(res.Content);
-        //        return myDeserializedClass;
-        //    }
-        //    return null;
-        //}
+
         public async Task<TodayPhoto> GetTodayPhoto()
         {
             var url = "https://api.nasa.gov/planetary/apod?api_key=WsYeuuaywUAJILhko8CfVQwj38v867sG32f8QseL";

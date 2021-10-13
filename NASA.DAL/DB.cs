@@ -1,14 +1,15 @@
-﻿using System.Data.Entity;
-using System.Net.Http;
+﻿using Microsoft.EntityFrameworkCore;
+using NASA.BE;
 
 namespace NASA.DAL
 {
     class DB : DbContext
     {
-        static HttpClient client = new HttpClient();
-        public DB() : base("NASA-DB2021")
+        public DB() : base()
         {
 
         }
+        public DbSet<Planet> Planets { get; set; }
+        public DbSet<Asteroid> 
     }
 }
