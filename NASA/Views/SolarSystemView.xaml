@@ -7,7 +7,7 @@
               xmlns:Tools="clr-namespace:NASA.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" >
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" 
               Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
 
@@ -29,39 +29,35 @@
             <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center"
                                RenderTransformOrigin="0,0" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
                 <Tools:SphereControl x:Name="EarthPlanet" Height="100" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="600">
-                    <Image Source="/Images/Earth.png" Width="100">
-                        <!--<Image.InputBindings>
-                            <MouseBinding Gesture="LeftClick" Command="{Binding PlanetDescriptionCommand}" CommandParameter="EarthPlanet"/>
-                        </Image.InputBindings>-->
-                    </Image>
+                    <Image Source="/Images/Earth.png" Width="100" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="MarsPlanet" Height="100" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="600">
-                    <Image Source="/Images/mars.png" Width="100" MouseDown="Image_Click"/>
+                    <Image Source="/Images/mars.png" Width="100" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="JupiterPlanet" Height="100" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="600">
-                    <Image Source="/Images/Jupiter.png" Width="130" />
+                    <Image Source="/Images/Jupiter.png" Width="130" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="SaturnPlanet" Height="100" InnerColorBrush="DarkOliveGreen" OuterColorBrush="Olive" Canvas.Left="600">
-                    <Image Source="/Images/saturn.png"  Width="180"/>
+                    <Image Source="/Images/saturn.png"  Width="180" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="UranusPlanet" Height="100" InnerColorBrush="Aqua" OuterColorBrush="Silver" Canvas.Left="600">
-                    <Image Source="/Images/URANUS.png" Width="160" />
+                    <Image Source="/Images/URANUS.png" Width="160" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="NeptunePlanet" Height="100" InnerColorBrush="Blue" OuterColorBrush="Turquoise" Canvas.Left="600">
-                    <Image Source="/Images/NEPTUNE.png" Width="130"/>
+                    <Image Source="/Images/NEPTUNE.png" Width="130" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="MercuryPlanet" Height="100" InnerColorBrush="DimGray" OuterColorBrush="LightGray" Canvas.Left="600">
-                    <Image Source="/Images/Mercury.png" Width="90"/>
+                    <Image Source="/Images/Mercury.png" Width="90" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
 
                 <Tools:SphereControl x:Name="VenusPlanet" Height="100" InnerColorBrush="Orange" OuterColorBrush="Orange" Canvas.Left="600">
-                    <Image Source="/Images/Venus_new.png" Width="150" />
+                    <Image Source="/Images/Venus_new.png" Width="150" MouseEnter="Image_Click"/>
                 </Tools:SphereControl>
             </Tools:CarouselControl>
             <Grid Grid.Row="1" Grid.Column="1" >
@@ -73,23 +69,16 @@
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  FontSize="40">Selected Planet:</TextBlock>
+                <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  FontSize="40" Foreground="White">Selected Planet:</TextBlock>
                 <TextBlock Grid.Column="1" Name="CurrentlySelectedNameTextBlock" TextAlignment="Center" FontSize="40" VerticalAlignment="Center"  FontWeight="Bold" ></TextBlock>
-                    <!--eangle-->
+                    <!--angle-->
                 <RadioButton Visibility="Hidden" Name="HorizontalSelectionRadio" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Horizontal" GroupName="Orientation" Checked="HorizontalOrientationRadioButton_Checked" IsChecked="True" />
             </Grid>
 
-            <TextBlock x:Name="selectedDescription" Grid.Row="2" Grid.Column="1" Text="{Binding }" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="5" HorizontalAlignment="Center">
-                bla bla bla<LineBreak/>
-                bla bla bla
+            <TextBlock x:Name="selectedDescription" Grid.Row="2" Grid.Column="1" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="5" HorizontalAlignment="Center">
+                <!--bla bla bla<LineBreak/>
+                bla bla bla-->
             </TextBlock>
-
-
-
-
-            <!--{Binding selectedPlanet.Description, Mode=Default}-->
-
-
         </Grid>
     </ScrollViewer>
 </UserControl>
