@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NASA.BE\NASA.BE.csproj" />
     <ProjectReference Include="..\NASA.DAL\NASA.DAL.csproj" />
   </ItemGroup>

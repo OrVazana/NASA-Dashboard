@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
 using NASA.BE;
 using NASA.DAL.Interfaces;
 using Newtonsoft.Json;
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
+using System.IO;
+using System.Drawing;
 
 namespace NASA.DAL
 {
@@ -19,7 +22,6 @@ namespace NASA.DAL
         //ctor
         public Repository()
         {
-            //
             planets = new List<Planet> { 
             new Planet() {id=1, Name= "EarthPlanet",Description= "Earth is the third planet from the Sun and the only astronomical object known to harbour and support life. About 29.2% of Earth's surface is land consisting of continents and islands. The remaining 70.8% is covered with water"},
             new Planet() {id=2, Name= "MarsPlanet",Description= "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury. In English, Mars carries the name of the Roman god of war and is often referred to as the Red Planet"},
@@ -30,7 +32,47 @@ namespace NASA.DAL
             new Planet() {id=7, Name= "MercuryPlanet",Description= "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets. It is named after the Roman god Mercurius (Mercury), god of commerce"},
             new Planet() {id=8, Name= "VenusPlanet",Description= "Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As the brightest natural object in Earth's night sky after the Moon, Venus can cast shadows and can be, on rare occasions, visible to the naked eye in broad daylight."}
             };
+
+            fireBaseStart();
+            
         }
+        //firebase
+
+        IFirebaseConfig fcon = new FirebaseConfig()
+        {
+            AuthSecret = "w6BPCswwtxldvQIIDtGeVqf50d069CdzSTocwpTk",
+            BasePath = "https://nasa-43255-default-rtdb.firebaseio.com/"
+        };
+        IFirebaseClient client;
+        public void fireBaseStart()
+        {
+            client = new FireSharp.FirebaseClient(fcon);
+            uploadImage();
+        }
+        private async Task uploadImage()
+        {
+            byte[] imgData = System.IO.File.ReadAllBytes(@"C:\Users\rebar\Desktop\DT\הנדסת חלונות\pro\NASA\Images\Earth.png");
+            string output = Convert.ToBase64String(imgData);
+            SetResponse respone = await client.SetAsync("Image/", output);
+        }
+        
+        private async Task downloadImage()
+        {
+            FirebaseResponse respone = await client.GetAsync("Image/");
+            string image = respone.ResultAs<string>();
+            byte[] b = Convert.FromBase64String(image);
+
+            MemoryStream ms = new MemoryStream();
+            ms.Write(b, 0, Convert.ToInt32(b.Length));
+
+            Bitmap bm = new Bitmap(ms, false);
+            ms.Dispose();
+            //bm has the image
+
+        }
+
+
+
 
         public List<Planet> GetAllPlanets()
         {
