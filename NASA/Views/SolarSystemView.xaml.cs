@@ -14,18 +14,18 @@ namespace NASA.Views
     /// </summary>
     public partial class SolarSystemView : UserControl
     {
-        public SolarSystemVM VM = new SolarSystemVM(); 
+        public SolarSystemVM VM = new();
         public SolarSystemView()
         {
             InitializeComponent();
             
             DataContext = VM;
-            _carouselDABRadioStations.SelectionChanged += _carouselDABRadioStations_SelectionChanged;
+            _carouselPlanets.SelectionChanged += _carouselPlanets_SelectionChanged;
         }
 
-        private void _carouselDABRadioStations_SelectionChanged(FrameworkElement selectedElement)
+        private void _carouselPlanets_SelectionChanged(FrameworkElement selectedElement)
         {
-            var viewModel = DataContext as ViewModels.SolarSystemVM;
+            var viewModel = DataContext as SolarSystemVM;
             if (viewModel == null)
             {
                 return;
@@ -36,27 +36,27 @@ namespace NASA.Views
 
         private void _buttonLeftArrow_Click(object sender, RoutedEventArgs e)
         {
-            _carouselDABRadioStations.RotateRight();
+            _carouselPlanets.RotateRight();
         }
 
         private void _buttonRightArrow_Click(object sender, RoutedEventArgs e)
         {
-            _carouselDABRadioStations.RotateLeft();
+            _carouselPlanets.RotateLeft();
         }
 
-        private void _checkBoxVerticalCarousel_Click(object sender, RoutedEventArgs e)
-        {
-            _carouselDABRadioStations.VerticalOrientation = _checkBoxVerticalCarousel.IsChecked.HasValue ? _checkBoxVerticalCarousel.IsChecked.Value : false;
-        }
+        //private void _checkBoxVerticalCarousel_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _carouselPlanets.VerticalOrientation = _checkBoxVerticalCarousel.IsChecked.HasValue ? _checkBoxVerticalCarousel.IsChecked.Value : false;
+        //}
 
         private void _buttonLeftManyArrow_Click(object sender, RoutedEventArgs e)
         {
-            _carouselDABRadioStations.RotateIncrement(-5);
+            _carouselPlanets.RotateIncrement(-5);
         }
 
         private void _buttonRightManyArrow_Click(object sender, RoutedEventArgs e)
         {
-            _carouselDABRadioStations.RotateIncrement(5);
+            _carouselPlanets.RotateIncrement(5);
         }
     }
 }

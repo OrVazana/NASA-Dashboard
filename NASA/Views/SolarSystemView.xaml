@@ -38,10 +38,10 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="_polygon" Property="Stroke" Value="Orange" />
+                                    <Setter TargetName="_polygon" Property="Stroke" Value="green" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="_polygon" Property="Stroke" Value="Red" />
+                                    <Setter TargetName="_polygon" Property="Stroke" Value="blue" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
 
@@ -73,40 +73,20 @@
 
         </ResourceDictionary>
     </UserControl.Resources>
-    <ScrollViewer Name="Scroller" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Name="Scroller" VerticalScrollBarVisibility="Hidden">
         <Grid>
 
             <Grid.Background>
                 <ImageBrush ImageSource="../Images/blackSpace.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
 
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="2*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>-->
-
-
-
-
-
-
-
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="0"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
@@ -121,13 +101,16 @@
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Name="_buttonLeftManyArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftManyArrow_Click"/>
-            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Name="_buttonLeftArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftArrow_Click"/>
-            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="7" Name="_buttonRightArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightArrow_Click"/>
-            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="9" Name="_buttonRightManyArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightManyArrow_Click"/>
-            <Label Grid.Row="1" Grid.Column="5" Content="{Binding SelectedPlanet.Name}" FontSize="32" Foreground="White" HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="7" Grid.Column="5" TextWrapping="Wrap" Text="{Binding SelectedPlanet.Description}"  FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-            <Tools:CarouselControl Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5" x:Name="_carouselDABRadioStations" ItemsSource="{Binding Planets}" SelectedItem="{Binding SelectedPlanet,Mode=TwoWay}" ShowRotation="True"  TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Name="_buttonLeftManyArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftManyArrow_Click"/>
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Name="_buttonLeftArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftArrow_Click"/>
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="7" Name="_buttonRightArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightArrow_Click"/>
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="9" Name="_buttonRightManyArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightManyArrow_Click"/>
+            
+            <Label Grid.Row="1" Grid.Column="5" Content="{Binding SelectedPlanet.Name}" FontSize="50" FontWeight="Bold" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            
+            <TextBlock Grid.Row="4" Grid.Column="5" TextWrapping="Wrap" Text="{Binding SelectedPlanet.Description}"  FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            
+            <Tools:CarouselControl Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="5" x:Name="_carouselPlanets" ItemsSource="{Binding Planets}" SelectedItem="{Binding SelectedPlanet,Mode=TwoWay}" ShowRotation="True"  TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Tools:CarouselControl.Style>
                     <Style TargetType="Tools:CarouselControl">
                         <Setter Property="CarouselItemTemplate" >
@@ -150,7 +133,7 @@
                     </Style>
                 </Tools:CarouselControl.Style>
             </Tools:CarouselControl>
-            <Grid Grid.Row="7" Grid.Column="5">
+            <!--<Grid Grid.Row="7" Grid.Column="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -159,8 +142,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <!--<CheckBox Grid.Row="0" Grid.Column="0" Name="_checkBoxVerticalCarousel" Content="Vertical Carousel" IsChecked="{Binding VerticalCarousel}" Click="_checkBoxVerticalCarousel_Click"/>-->
-            </Grid>
+                --><!--<CheckBox Grid.Row="0" Grid.Column="0" Name="_checkBoxVerticalCarousel" Content="Vertical Carousel" IsChecked="{Binding VerticalCarousel}" Click="_checkBoxVerticalCarousel_Click"/>--><!--
+            </Grid>-->
         </Grid>
     </ScrollViewer>
 </UserControl>
