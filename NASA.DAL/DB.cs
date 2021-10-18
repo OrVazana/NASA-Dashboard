@@ -6,20 +6,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NASA.BE;
+using System;
 
 namespace NASA.DAL
 {
     public class DB : System.Data.Entity.DbContext
     {
-        public DB() : base("NasaDb")
-        {
+        public DbSet<Planet> Planets { get; set; }
 
-        }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public string DbPath { get; private set; }
+
+        public DB()
         {
-            base.OnModelCreating(modelBuilder);
+        
         }
-        public System.Data.Entity.DbSet<Planet> Planets { get; set; }
-        public System.Data.Entity.DbSet<Image> Images { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if(!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=NASA2021ProjectDB;Trusted_Connection=True;");
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        
     }
 }

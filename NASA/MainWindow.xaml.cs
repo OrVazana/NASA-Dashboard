@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using NASA.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -28,17 +29,24 @@ namespace NASA
         }
         private void ButtonMaximaize_Click(object sender, RoutedEventArgs e)
         {
-            maxOrDflt();
-        }
-        private void maxOrDflt()
-        {
             try
             {
+                Button b = (Button)this.FindName("ButtonMaximize");
                 Window window = Application.Current.MainWindow;
-                if (window.WindowState == System.Windows.WindowState.Maximized)
-                    window.WindowState = System.Windows.WindowState.Normal;
+                PackIcon packIcon = new();
+                if (window.WindowState == WindowState.Maximized)
+                {
+                    window.WindowState = WindowState.Normal;
+                    packIcon.Kind = PackIconKind.WindowMaximize;
+                    //window.ResizeMode = ResizeMode.CanResize;
+                }
                 else
-                    window.WindowState = System.Windows.WindowState.Maximized;
+                {
+                    window.WindowState = WindowState.Maximized;
+                    packIcon.Kind = PackIconKind.WindowRestore;
+                    //window.ResizeMode = ResizeMode.NoResize;
+                }
+                b.Content = packIcon;
             }
             catch
             {
@@ -68,7 +76,7 @@ namespace NASA
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
-                maxOrDflt();
+                ButtonMaximaize_Click(sender,e);
         }
         #endregion
     }

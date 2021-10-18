@@ -26,7 +26,7 @@ namespace NASA.BL
             return IRepository.GetTodayPhoto();
         }
 
-        public Task<List<libraryImage>> GetLibrarySearchResult(string search)
+        public Task<List<Item>> GetLibrarySearchResult(string search)
         {
             return IRepository.GetLibrarySearchResult(search);
         }

@@ -9,7 +9,7 @@ namespace NASA.DAL.Interfaces
         //apod api
         public Task<TodayPhoto> GetTodayPhoto();
         //library api
-        public Task<List<libraryImage>> GetLibrarySearchResult(string search);
+        public Task<List<Item>> GetLibrarySearchResult(string search);
         public Task<List<Asteroid>> GetAsteroidsFilteredResult();
 
 

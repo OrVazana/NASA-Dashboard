@@ -9,7 +9,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              FontFamily="{materialDesign:MaterialDesignFont}"
              d:DesignHeight="700" d:DesignWidth="800">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
                 <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -24,8 +24,8 @@
                     <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
             <TextBlock  Text="Astronomy Picture of the Day" Grid.Column="1" Grid.Row="0" FontSize="45" FontWeight="Bold" Margin="5" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap"/>
-            <ProgressBar x:Name="ProgressBar" Visibility="{Binding TodayPhoto.IsNotCompleted, Mode=Default,Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignCircularProgressBar}" Grid.Column="1" Grid.Row="1" Value="0" IsIndeterminate="True" />
-            <Image MaxHeight="700" MaxWidth="1000" Grid.Column="1" Grid.Row="1" Margin="20" Source="{Binding TodayPhoto.Result.url ,IsAsync=True}"/>
+            <ProgressBar x:Name="ProgressBar" Visibility="{Binding imageToday.Loaded, Mode=Default,Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignCircularProgressBar}" Grid.Column="1" Grid.Row="1" Value="0" IsIndeterminate="True" />
+            <Image x:Name="imageToday" MaxHeight="700" MaxWidth="1000" Grid.Column="1" Grid.Row="1" Margin="20" Source="{Binding TodayPhoto.Result.url}"/>
             <TextBlock x:Name="title" Text="{Binding TodayPhoto.Result.title, Mode=Default}" Grid.Column="1" Grid.Row="2" FontSize="45" FontWeight="Bold" Margin="5" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap"/>
             <TextBlock x:Name="date" Text="{Binding TodayPhoto.Result.date, Mode=Default}" Grid.Column="1" Grid.Row="3" FontSize="15" Margin="2" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap"/>
             <TextBlock x:Name="explanation" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  Text="{Binding TodayPhoto.Result.explanation, Mode=Default}"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="40"/>

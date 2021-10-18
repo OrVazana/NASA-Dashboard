@@ -34,17 +34,22 @@
             </Grid>
         </Border>
         <materialDesign:Card Grid.Row="1" Margin="10">
-            <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding AsteroidData}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
-           FlowDirection="LeftToRight" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="id" Binding="{Binding id}"/>
-                    <DataGridTextColumn Header="name" Binding="{Binding name}"/>
-                    <DataGridTextColumn Header="absolute magnitude" Binding="{Binding absolute_magnitude_h}"/>
-                    <DataGridTextColumn Header="is potentially hazardous" Binding="{Binding is_potentially_hazardous_asteroid}"/>
-                    <DataGridTextColumn Header="min estimated diameter" Binding="{Binding kilometers.estimated_diameter_min}"/>
-                    <DataGridTextColumn Header="max estimated diameter" Binding="{Binding kilometers.estimated_diameter_max}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding AsteroidData}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="id" Binding="{Binding id}"/>
+                        <DataGridTextColumn Header="name" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="absolute magnitude" Binding="{Binding absolute_magnitude_h}"/>
+                        <DataGridTextColumn Header="is potentially hazardous" Binding="{Binding is_potentially_hazardous_asteroid}"/>
+                        <DataGridTextColumn Header="min estimated diameter" Binding="{Binding kilometers.estimated_diameter_min}"/>
+                        <DataGridTextColumn Header="max estimated diameter" Binding="{Binding kilometers.estimated_diameter_max}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <ProgressBar x:Name="ProgressBar" Margin="0,100" Visibility="{Binding Spinner, Mode=Default,Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignCircularProgressBar}"  Value="0" IsIndeterminate="True" />
+            </Grid>
         </materialDesign:Card>
 
         <TextBlock Grid.Row="2" VerticalAlignment="Center"  Margin="100,0,0,0"  FontSize="16">
