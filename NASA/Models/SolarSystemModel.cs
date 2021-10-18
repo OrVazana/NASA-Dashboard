@@ -3,6 +3,7 @@ using NASA.BL;
 using NASA.BL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ namespace NASA.Models
         {
             BL = new BLImp();
         }
-        public Planet getSelectedPlanet(string name)
+        public ObservableCollection<Planet> getAllPlanets()
         {
-            return BL.getSelectedPlanet(name);
+            return new ObservableCollection<Planet>(BL.getAllPlanets().Result);
         }
     }
 }

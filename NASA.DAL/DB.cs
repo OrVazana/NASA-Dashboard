@@ -1,16 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NASA.BE;
-using System;
 
 namespace NASA.DAL
 {
-    public class DB : System.Data.Entity.DbContext
+    public class DB : DbContext
     {
         public DbSet<Planet> Planets { get; set; }
 

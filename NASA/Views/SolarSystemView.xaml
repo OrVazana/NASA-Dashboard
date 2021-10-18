@@ -4,22 +4,83 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NASA.Views" 
-             xmlns:tools="clr-namespace:NASA.Tools"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              FontFamily="{materialDesign:MaterialDesignFont}"
-              xmlns:Tools="clr-namespace:NASA.Tools"
+             xmlns:Tools="clr-namespace:NASA.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}" 
-              Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type Window}}}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyleCentred" TargetType="Label">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="StyleButtonBase" TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="StyleArrowButton" TargetType="Button" BasedOn="{StaticResource StyleButtonBase}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid >
+                                <Polygon Name="_polygon" Points="30,0 30,40 0,20" Fill="{TemplateBinding Background}" Stroke="Gainsboro" StrokeThickness="1" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="_polygon" Property="Stroke" Value="Orange" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="_polygon" Property="Stroke" Value="Red" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="StyleLeftArrow" TargetType="Button" BasedOn="{StaticResource StyleArrowButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                            <GradientStop Color="#DDDDDD" Offset="0"/>
+                            <GradientStop Color="#FFFFFF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="StyleRightArrow" TargetType="Button" BasedOn="{StaticResource StyleLeftArrow}">
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1.0" ScaleY="1"/>
+                        </TransformGroup>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer Name="Scroller" VerticalScrollBarVisibility="Auto">
+        <Grid>
 
             <Grid.Background>
                 <ImageBrush ImageSource="../Images/blackSpace.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
 
-            <Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
@@ -28,60 +89,78 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>-->
+
+
+
+
+
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-
-            <Tools:CarouselControl Grid.Row="0" Grid.Column="1" x:Name="ExampleCarouselControl" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   
-                               RenderTransformOrigin="0,0" OnElementSelected="ExampleCarouselControl_OnElementSelected" >
-                <Tools:SphereControl x:Name="EarthPlanet" Height="100" InnerColorBrush="blue" OuterColorBrush="blue" Canvas.Left="600">
-                    <Image Source="{Binding DisplayedImagePath}" Width="100" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="MarsPlanet" Height="100" InnerColorBrush="Brown" OuterColorBrush="DarkOrange" Canvas.Left="600">
-                    <Image Source="/Images/mars.png" Width="100" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="JupiterPlanet" Height="100" InnerColorBrush="DarkSalmon" OuterColorBrush="DarkSalmon" Canvas.Left="600">
-                    <Image Source="/Images/Jupiter.png" Width="130" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="SaturnPlanet" Height="100" InnerColorBrush="DarkOliveGreen" OuterColorBrush="Olive" Canvas.Left="600">
-                    <Image Source="/Images/saturn.png"  Width="180" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="UranusPlanet" Height="100" InnerColorBrush="Aqua" OuterColorBrush="Silver" Canvas.Left="600">
-                    <Image Source="/Images/URANUS.png" Width="160" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="NeptunePlanet" Height="100" InnerColorBrush="Blue" OuterColorBrush="Turquoise" Canvas.Left="600">
-                    <Image Source="/Images/NEPTUNE.png" Width="130" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="MercuryPlanet" Height="100" InnerColorBrush="DimGray" OuterColorBrush="LightGray" Canvas.Left="600">
-                    <Image Source="/Images/Mercury.png" Width="90" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
-
-                <Tools:SphereControl x:Name="VenusPlanet" Height="100" InnerColorBrush="Orange" OuterColorBrush="Orange" Canvas.Left="600">
-                    <Image Source="/Images/Venus_new.png" Width="150" MouseEnter="Image_Click"/>
-                </Tools:SphereControl>
+            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Name="_buttonLeftManyArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftManyArrow_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Name="_buttonLeftArrow" Style="{StaticResource StyleLeftArrow}" Click="_buttonLeftArrow_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="7" Name="_buttonRightArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightArrow_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="3" Grid.Column="9" Name="_buttonRightManyArrow" Style="{StaticResource StyleRightArrow}" Click="_buttonRightManyArrow_Click"/>
+            <Label Grid.Row="1" Grid.Column="5" Content="{Binding SelectedPlanet.Name}" FontSize="32" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Grid.Column="5" TextWrapping="Wrap" Text="{Binding SelectedPlanet.Description}"  FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            <Tools:CarouselControl Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="5" x:Name="_carouselDABRadioStations" ItemsSource="{Binding Planets}" SelectedItem="{Binding SelectedPlanet,Mode=TwoWay}" ShowRotation="True"  TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Tools:CarouselControl.Style>
+                    <Style TargetType="Tools:CarouselControl">
+                        <Setter Property="CarouselItemTemplate" >
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border BorderThickness="1" Width="250" Height="150">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="30"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" BorderThickness="0" Background="Transparent">
+                                                <Image Grid.Row="0" Source="{Binding ImageSource}" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Tools:CarouselControl.Style>
             </Tools:CarouselControl>
-            <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid Grid.Row="7" Grid.Column="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  FontSize="40" Foreground="White">Selected Planet:</TextBlock>
-                <TextBlock Grid.Column="1" Name="CurrentlySelectedNameTextBlock" TextAlignment="Center" FontSize="40" VerticalAlignment="Center"  FontWeight="Bold" ></TextBlock>
-                    <!--angle-->
-                <RadioButton Visibility="Hidden" Name="HorizontalSelectionRadio" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Horizontal" GroupName="Orientation" Checked="HorizontalOrientationRadioButton_Checked" IsChecked="True" />
+                <!--<CheckBox Grid.Row="0" Grid.Column="0" Name="_checkBoxVerticalCarousel" Content="Vertical Carousel" IsChecked="{Binding VerticalCarousel}" Click="_checkBoxVerticalCarousel_Click"/>-->
             </Grid>
-
-            <TextBlock x:Name="selectedDescription" Grid.Row="2" Grid.Column="1" Foreground="White"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="50,0" HorizontalAlignment="Center">
-            </TextBlock>
         </Grid>
     </ScrollViewer>
 </UserControl>

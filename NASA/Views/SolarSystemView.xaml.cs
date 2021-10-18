@@ -5,6 +5,7 @@ using System;
 using System.Windows.Shapes;
 using System.Windows.Media;
 using NASA.ViewModels;
+using NASA.BE;
 
 namespace NASA.Views
 {
@@ -19,63 +20,43 @@ namespace NASA.Views
             InitializeComponent();
             
             DataContext = VM;
-        }
-        #region Carousel
-        //private void CarouselSpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    ExampleCarouselControl.RotationSpeed = e.NewValue;
-        //}
-
-        //private void LookdownOffsetSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    ExampleCarouselControl.LookDownOffset = e.NewValue;
-        //    ExampleCarouselControl.SetElementPositions();
-        //}
-
-        //private void CarouselFadeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    ExampleCarouselControl.Fade = e.NewValue;
-        //    ExampleCarouselControl.SetElementPositions();
-        //}
-
-        //private void CarouselScaleSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    ExampleCarouselControl.Scale = e.NewValue;
-        //    ExampleCarouselControl.SetElementPositions();
-        //}
-
-        //private void VerticalOrientationRadioButton_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    ExampleCarouselControl.Width = 0;
-        //    ExampleCarouselControl.Height = 600;
-        //    ExampleCarouselControl.ReInitialize();
-        //}
-
-        private void HorizontalOrientationRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            ExampleCarouselControl.Width = 600;
-            ExampleCarouselControl.Height = 0;
-            ExampleCarouselControl.ReInitialize();
+            _carouselDABRadioStations.SelectionChanged += _carouselDABRadioStations_SelectionChanged;
         }
 
-        private void ExampleCarouselControl_OnElementSelected(object sender)
+        private void _carouselDABRadioStations_SelectionChanged(FrameworkElement selectedElement)
         {
-            SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
-            if ((CurrentlySelectedNameTextBlock != null))
+            var viewModel = DataContext as ViewModels.SolarSystemVM;
+            if (viewModel == null)
             {
-                //selectedDescription.Text = SolarSystemVM().getSelectedPlanet(selected.Name);
-                CurrentlySelectedNameTextBlock.Foreground = selected.SphereFill;
-                CurrentlySelectedNameTextBlock.Text = selected.Name;
+                return;
             }
-        }
-        #endregion
 
-        private void Image_Click(object sender, RoutedEventArgs e)
+            viewModel.SelectedPlanet = selectedElement.DataContext as Planet;
+        }
+
+        private void _buttonLeftArrow_Click(object sender, RoutedEventArgs e)
         {
-            SphereControl selected = ExampleCarouselControl.CurrentlySelected as SphereControl;
-            //selected.Name
-            selectedDescription.Text = VM.getSelectedPlanet(selected.Name).Description;
-            //selectedDescription.Text = selected.Name;
+            _carouselDABRadioStations.RotateRight();
+        }
+
+        private void _buttonRightArrow_Click(object sender, RoutedEventArgs e)
+        {
+            _carouselDABRadioStations.RotateLeft();
+        }
+
+        private void _checkBoxVerticalCarousel_Click(object sender, RoutedEventArgs e)
+        {
+            _carouselDABRadioStations.VerticalOrientation = _checkBoxVerticalCarousel.IsChecked.HasValue ? _checkBoxVerticalCarousel.IsChecked.Value : false;
+        }
+
+        private void _buttonLeftManyArrow_Click(object sender, RoutedEventArgs e)
+        {
+            _carouselDABRadioStations.RotateIncrement(-5);
+        }
+
+        private void _buttonRightManyArrow_Click(object sender, RoutedEventArgs e)
+        {
+            _carouselDABRadioStations.RotateIncrement(5);
         }
     }
 }

@@ -15,13 +15,15 @@ namespace NASA.BE
         [Column("varchar(200")]
         [Required]
         public string Description { get; set; }
-        //public string IamgeSource { get; set; }
+        
+        public string ImageSource { get; set; }
 
-        public Planet(int id,string name, string Description)
+        public Planet(int id,string name, string Description, string ImageSource)
         {
             this.id = id;
             this.Name = name;
             this.Description = Description;
+            this.ImageSource = ImageSource;
         }
 
         public Planet()

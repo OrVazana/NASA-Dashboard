@@ -2,6 +2,7 @@
 using NASA.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,44 @@ namespace NASA.ViewModels
     {
         public SolarSystemModel SolarSystemModel { get; set; }
 
-        public Planet selectedPlanet { get; set; }
-
         public SolarSystemVM()
         {
             SolarSystemModel = new SolarSystemModel();
-            
+            getAllPlanets();
         }
-        
-        public Planet getSelectedPlanet(string name)
+
+        private ObservableCollection<Planet> _planets;
+        async public void getAllPlanets()
         {
-            selectedPlanet = SolarSystemModel.getSelectedPlanet(name);
-            return selectedPlanet;
+            Planets = await Task.Run(() => SolarSystemModel.getAllPlanets());
+            SelectedPlanet = Planets[0];
+        }
+        public ObservableCollection<Planet> Planets
+        {
+            get
+            {
+                return _planets;
+            }
+            set
+            {
+                _planets = value;
+                OnPropertyChanged("Planets");
+            }
+        }
+
+        private Planet _selectedPlanet;
+        public Planet SelectedPlanet
+        {
+            get
+            {
+                return _selectedPlanet;
+;
+            }
+            set
+            {
+                _selectedPlanet = value;
+                OnPropertyChanged("SelectedPlanet");
+            }
         }
 
     }

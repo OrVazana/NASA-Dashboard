@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfCarouselDemo.WPFCarouselControl
+namespace NASA.WPFCarouselControl
 {
     public interface ICarouselControl
     {

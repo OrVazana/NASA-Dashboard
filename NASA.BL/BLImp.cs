@@ -4,6 +4,7 @@ using NASA.DAL;
 using NASA.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,9 +32,9 @@ namespace NASA.BL
             return IRepository.GetLibrarySearchResult(search);
         }
 
-        public Planet getSelectedPlanet(string name)
+        public Task<ObservableCollection<Planet>> getAllPlanets()
         {
-            return IRepository.getSelectedPlanet(name);
+            return IRepository.GetAllPlanets();
         }
 
         public Task<List<Asteroid>> GetAsteroidsFilteredResult()

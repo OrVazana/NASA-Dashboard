@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="WPFCarouselControl\**" />
-    <EmbeddedResource Remove="WPFCarouselControl\**" />
-    <None Remove="WPFCarouselControl\**" />
-    <Page Remove="WPFCarouselControl\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Images\blackSpace.jpg" />
     <None Remove="Images\blank-profile-picture.png" />
     <None Remove="Images\Earth.png" />
