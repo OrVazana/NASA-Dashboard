@@ -15,6 +15,17 @@ namespace NASA.ViewModels
         public AsteroidsModel AsteroidsModel { get; set; }
         public AsteroidsModel CurrentM { get; set; }
 
+        private bool spinner;
+        public bool Spinner
+        {
+            get { return spinner; }
+            set
+            {
+                spinner = value;
+                OnPropertyChanged("Spinner");
+            }
+        }
+
         private int count;
         public int Count
         {
@@ -36,7 +47,6 @@ namespace NASA.ViewModels
                 Count = asteroidData.Count;
             }
         }
-        //public NotifyTaskCompletion<List<libraryImage>> libraryImages { get; set; }
 
         public AsteroidsVM()
         {
@@ -46,7 +56,9 @@ namespace NASA.ViewModels
         }
         async public void doWork()
         {
+            Spinner = true;
             AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult());
+            Spinner = false;
         }
         //async public void search(string search)
         //{

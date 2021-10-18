@@ -14,8 +14,18 @@ namespace NASA.ViewModels
         public ImageLibrarySearchModel ImageLibrarySearchModel { get; set; }
         public ImageLibrarySearchModel CurrentM { get; set; }
         
-        public NotifyTaskCompletion<List<libraryImage>> LibraryImages1 { get; set; }
-
+        public NotifyTaskCompletion<List<Item>> LibraryImages1 { get; set; }
+        
+        private bool spinner;
+        public bool Spinner
+        {
+            get { return spinner; }
+            set
+            {
+                spinner = value;
+                OnPropertyChanged("Spinner");
+            }
+        }
         private int count;
         public int Count
         {
@@ -26,8 +36,8 @@ namespace NASA.ViewModels
                 OnPropertyChanged("Count");
             }
         }
-        private ObservableCollection<libraryImage> libraryImages;
-        public ObservableCollection<libraryImage> LibraryImages
+        private ObservableCollection<Item> libraryImages;
+        public ObservableCollection<Item> LibraryImages
         {
             get { return libraryImages; }
             set
@@ -37,7 +47,7 @@ namespace NASA.ViewModels
                 Count = libraryImages.Count;
             }
         }
-        //public NotifyTaskCompletion<List<libraryImage>> libraryImages { get; set; }
+        //public NotifyTaskCompletion<List<Item>> libraryImages { get; set; }
 
         public ImageLibrarySearchVM()
         {
@@ -46,16 +56,18 @@ namespace NASA.ViewModels
 
         async public void search(string search)
         {
-            LibraryImages = new ObservableCollection<libraryImage>();
+            Spinner = true;
+            LibraryImages = new ObservableCollection<Item>();
             try
             {
                LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(search));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //handle the exception
                 //...............
             }
+            Spinner = false;
         }
     }
 }

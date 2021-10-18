@@ -15,9 +15,9 @@ namespace NASA.Models
         {
             BL = new BLImp();
         }
-        public ObservableCollection<libraryImage> GetLibrarySearchResult(string search)
+        public ObservableCollection<Item> GetLibrarySearchResult(string search)
         {
-            return new ObservableCollection<libraryImage>(BL.GetLibrarySearchResult(search).Result);
+            return new ObservableCollection<Item>(BL.GetLibrarySearchResult(search).Result);
         }
     }
 }

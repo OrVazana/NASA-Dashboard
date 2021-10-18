@@ -10,40 +10,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid>
+        <Grid Margin="50,30" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <TextBlock FontFamily="Century Gothic"
-                FontStretch="UltraExpanded"
-                FontStyle="Italic"
-                FontWeight="Medium" TextWrapping="Wrap"  Grid.ColumnSpan="2" x:Name="fsdf" TextAlignment="Justify" FontSize="30" Width="780">
-                Our project allows you to:<LineBreak/><LineBreak/>
-                <Bold Foreground="Purple">•</Bold> Watch APOD (Astronomy Picture of the Day).<LineBreak/><LineBreak/>
-                <Bold Foreground="Purple">•</Bold> See data profile on any each of the 8 planets in the solar system.<LineBreak/><LineBreak/>
-                <Bold Foreground="Purple">•</Bold> Search for images in the NASA library.<LineBreak/><LineBreak/>
-                <Bold Foreground="Purple">•</Bold> See Asteroids' status.<LineBreak/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" FontStretch="UltraExpanded" FontWeight="Medium" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" >
+                Our project options:
             </TextBlock>
+            <materialDesign:Card Background="Aqua"  Grid.Column="1" Grid.Row="2">
 
-                <!--<TextBlock x:Name="explanation" HorizontalAlignment="Left" Text="fsdfsd"  TextAlignment="Justify" TextWrapping="Wrap" FontSize="30" Margin="0,10,0,40" Grid.ColumnSpan="2" Width="780"/>-->
+            </materialDesign:Card>
+            <materialDesign:Card Background="Violet"  Grid.Column="2" Grid.Row="2">
 
-            <!--<Grid Margin="10" Grid.Column="0" Background="DarkBlue">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Margin="30" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-                </StackPanel>
-            </Grid>
-            <Grid Margin="10" Grid.Column="1" >
-                <Rectangle Stretch="Fill" Fill="Wheat" Opacity="0.6">
-                </Rectangle>
-                <StackPanel Margin="20 50" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-                </StackPanel>
-            </Grid>-->
+            </materialDesign:Card>
+            <materialDesign:Card Background="BlueViolet"  Grid.Column="1" Grid.Row="3">
+
+            </materialDesign:Card>
+            <materialDesign:Card Background="Red"  Grid.Column="2" Grid.Row="3">
+
+            </materialDesign:Card>
+
+
         </Grid>
     </Grid>
 </UserControl>

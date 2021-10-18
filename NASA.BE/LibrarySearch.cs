@@ -61,13 +61,18 @@ namespace NASA.BE
     {
         public string urlImage { get; set; }
         public string title { get; set; }
+        public string date { get; set; }
+        public string center { get; set; }
         public string description { get; set; }
 
-        public libraryImage(string urlImage, string title, string description)
+
+
+        public libraryImage(string urlImage, string title, string date,string center)
         {
             this.urlImage = urlImage;
             this.title = title;
-            this.description = description;
+            this.date = date;
+            this.center = center;
         }
     }
 }
