@@ -12,7 +12,7 @@ namespace NASA.BL.Interfaces
     {
         public Task<TodayPhoto> getTodayPhoto();
         public Task<List<Item>> GetLibrarySearchResult(string search);
-        public Task<List<Asteroid>> GetAsteroidsFilteredResult();
+        public List<Asteroid> GetAsteroidsFilteredResult(bool isDanger,double? Distance = null, DateTime? start = null, DateTime? end = null);
         public Task<ObservableCollection<Planet>> getAllPlanets();
     }
 }

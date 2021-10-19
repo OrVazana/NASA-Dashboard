@@ -48,6 +48,17 @@ namespace NASA.ViewModels
             }
         }
 
+        private bool isDanger;
+        public bool IsDanger
+        {
+            get { return isDanger; }
+            set
+            {
+                isDanger = value;
+                OnPropertyChanged("IsDanger");
+            }
+        }
+
         public AsteroidsVM()
         {
             AsteroidsModel = new AsteroidsModel();
@@ -57,7 +68,7 @@ namespace NASA.ViewModels
         async public void doWork()
         {
             Spinner = true;
-            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult());
+            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(isDanger));
             Spinner = false;
         }
         //async public void search(string search)

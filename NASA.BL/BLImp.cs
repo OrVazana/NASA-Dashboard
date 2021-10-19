@@ -37,9 +37,25 @@ namespace NASA.BL
             return IRepository.GetAllPlanets();
         }
 
-        public Task<List<Asteroid>> GetAsteroidsFilteredResult()
+        public List<Asteroid> GetAsteroidsFilteredResult(bool isDanger,double? Distance=null, DateTime? start = null, DateTime? end = null)
         {
-            return IRepository.GetAsteroidsFilteredResult();
+             var list=IRepository.GetAsteroidsFilteredResult().Result;
+            List<Asteroid> filterd = new();
+            if(isDanger)
+            {
+                var result=from astroid in list
+                where astroid.is_potentially_hazardous_asteroid == true
+                select astroid;
+                filterd= result.ToList();
+            }
+            if (Distance>0)
+            {
+                var result = from astroid in list
+                             where astroid.is_potentially_hazardous_asteroid == true
+                             select astroid;
+                filterd = result.ToList();
+            }
+            return filterd ;
         }
 
 

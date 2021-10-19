@@ -19,9 +19,9 @@ namespace NASA.Models
             BL = new BLImp();
         }
         //List<NearEarthObject>
-        public ObservableCollection<Asteroid> GetAsteroidsFilteredResult()
+        public ObservableCollection<Asteroid> GetAsteroidsFilteredResult(bool isDanger, double? Distance = null, DateTime? start = null, DateTime? end = null)
         {
-            return new ObservableCollection<Asteroid>(BL.GetAsteroidsFilteredResult().Result);
+            return new ObservableCollection<Asteroid>(BL.GetAsteroidsFilteredResult(isDanger,Distance,start,end));
         }
     }
 }

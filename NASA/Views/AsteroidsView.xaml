@@ -12,7 +12,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="13*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="14*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" BorderBrush="{DynamicResource AttentionToActionBrush}" BorderThickness="1" CornerRadius="10" Width="600" VerticalAlignment="Center" Margin="10">
@@ -33,7 +34,23 @@
                 </Button>
             </Grid>
         </Border>
-        <materialDesign:Card Grid.Row="1" Margin="10">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label Content="is danger:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <CheckBox Grid.Column="1" IsChecked="False" />
+            <Label Grid.Column="2" Content="distance:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="3" materialDesign:HintAssist.Hint="enter distance" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Grid.Column="4" Content="is danger:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <DatePicker Grid.Column="5" />
+        </Grid>
+        <materialDesign:Card Grid.Row="2" Margin="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
@@ -52,7 +69,7 @@
             </Grid>
         </materialDesign:Card>
 
-        <TextBlock Grid.Row="2" VerticalAlignment="Center"  Margin="100,0,0,0"  FontSize="16">
+        <TextBlock Grid.Row="3" VerticalAlignment="Center"  Margin="100,0,0,0"  FontSize="16">
             <Run Text="total: "/>
             <Run Text="{Binding Count, Mode=OneWay}"/>
         </TextBlock>
