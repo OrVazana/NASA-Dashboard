@@ -51,10 +51,18 @@ namespace NASA.BL
             if (Distance>0)
             {
                 var result = from astroid in list
-                             where astroid.is_potentially_hazardous_asteroid == true
+                             where Convert.ToDouble(astroid.kilometers)<=Distance
                              select astroid;
-                filterd = result.ToList();
+                filterd = filterd.Where(i => list.Contains(i)).ToList();
             }
+            if (start!=null)
+            {
+                //var result = from astroid in list
+                //             where astroid.
+                //             select astroid;
+                //filterd = result.ToList();
+            }
+
             return filterd ;
         }
 
