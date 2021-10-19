@@ -28,6 +28,11 @@ namespace NASA.DAL.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("varchar(200");
 
+                    b.Property<string>("ImageSource")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("varchar(100");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")

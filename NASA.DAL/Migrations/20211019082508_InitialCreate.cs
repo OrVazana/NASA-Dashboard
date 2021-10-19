@@ -2,7 +2,7 @@
 
 namespace NASA.DAL.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,8 @@ namespace NASA.DAL.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false),
                     varchar50 = table.Column<string>(name: "varchar(50", type: "nvarchar(max)", nullable: false),
-                    varchar200 = table.Column<string>(name: "varchar(200", type: "nvarchar(max)", nullable: false)
+                    varchar200 = table.Column<string>(name: "varchar(200", type: "nvarchar(max)", nullable: false),
+                    varchar100 = table.Column<string>(name: "varchar(100", type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

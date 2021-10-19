@@ -14,7 +14,6 @@ namespace NASA.DAL.Interfaces
         public Task<List<Asteroid>> GetAsteroidsFilteredResult();
 
         public Task<ObservableCollection<Planet>> GetAllPlanets();
-        //public Planet Task<ObservableCollection<Planet>> GetAllPlanets();
         //Task<string> GetResponseJSon(string apiUrl, string apiKey);
     }
 }

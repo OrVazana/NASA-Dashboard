@@ -15,7 +15,8 @@ namespace NASA.BE
         [Column("varchar(200")]
         [Required]
         public string Description { get; set; }
-        
+        [Column("varchar(100")]
+        [Required]
         public string ImageSource { get; set; }
 
         public Planet(int id,string name, string Description, string ImageSource)

@@ -9,8 +9,8 @@ using NASA.DAL;
 namespace NASA.DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20211017215959_initial")]
-    partial class initial
+    [Migration("20211019082508_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,11 @@ namespace NASA.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("varchar(200");
+
+                    b.Property<string>("ImageSource")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("varchar(100");
 
                     b.Property<string>("Name")
                         .IsRequired()
