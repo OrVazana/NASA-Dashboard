@@ -6,155 +6,102 @@ using System.Threading.Tasks;
 
 namespace NASA.BE
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-    public class Links
+    public partial class AsteroidRoot
     {
-        public string next { get; set; }
-        public string self { get; set; }
+        public AsteroidRootLinks Links { get; set; }
+        public long ElementCount { get; set; }
+        public Dictionary<string, List<NEO>> NearEarthObjects { get; set; }
     }
 
-    public class Page
+    public partial class AsteroidRootLinks
     {
-        public int size { get; set; }
-        public int total_elements { get; set; }
-        public int total_pages { get; set; }
-        public int number { get; set; }
+        public Uri Next { get; set; }
+        public Uri Prev { get; set; }
+        public Uri Self { get; set; }
     }
 
-    public class Kilometers
+    public partial class NEO
     {
-        public double estimated_diameter_min { get; set; }
-        public double estimated_diameter_max { get; set; }
+        public NearEarthObjectLinks Links { get; set; }
+        public long Id { get; set; }
+        public long NeoReferenceId { get; set; }
+        public string Name { get; set; }
+        public Uri NasaJplUrl { get; set; }
+        public double AbsoluteMagnitudeH { get; set; }
+        public EstimatedDiameter EstimatedDiameter { get; set; }
+        public bool IsPotentiallyHazardousAsteroid { get; set; }
+        public List<CloseApproachDatum> CloseApproachData { get; set; }
+        public bool IsSentryObject { get; set; }
     }
 
-    public class Meters
+    public partial class CloseApproachDatum
     {
-        public double estimated_diameter_min { get; set; }
-        public double estimated_diameter_max { get; set; }
+        public DateTimeOffset CloseApproachDate { get; set; }
+        public string CloseApproachDateFull { get; set; }
+        public long EpochDateCloseApproach { get; set; }
+        public RelativeVelocity RelativeVelocity { get; set; }
+        public MissDistance MissDistance { get; set; }
+        public OrbitingBody OrbitingBody { get; set; }
     }
 
-    public class Miles
+    public partial class MissDistance
     {
-        public double estimated_diameter_min { get; set; }
-        public double estimated_diameter_max { get; set; }
+        public string Astronomical { get; set; }
+        public string Lunar { get; set; }
+        public string Kilometers { get; set; }
+        public string Miles { get; set; }
     }
 
-    public class Feet
+    public partial class RelativeVelocity
     {
-        public double estimated_diameter_min { get; set; }
-        public double estimated_diameter_max { get; set; }
+        public string KilometersPerSecond { get; set; }
+        public string KilometersPerHour { get; set; }
+        public string MilesPerHour { get; set; }
     }
 
-    public class EstimatedDiameter
+    public partial class EstimatedDiameter
     {
-        public Kilometers kilometers { get; set; }
-        public Meters meters { get; set; }
-        public Miles miles { get; set; }
-        public Feet feet { get; set; }
+        public Feet Kilometers { get; set; }
+        public Feet Meters { get; set; }
+        public Feet Miles { get; set; }
+        public Feet Feet { get; set; }
     }
 
-    public class RelativeVelocity
+    public partial class Feet
     {
-        public string kilometers_per_second { get; set; }
-        public string kilometers_per_hour { get; set; }
-        public string miles_per_hour { get; set; }
+        public double EstimatedDiameterMin { get; set; }
+        public double EstimatedDiameterMax { get; set; }
     }
 
-    public class MissDistance
+    public partial class NearEarthObjectLinks
     {
-        public string astronomical { get; set; }
-        public string lunar { get; set; }
-        public string kilometers { get; set; }
-        public string miles { get; set; }
+        public Uri Self { get; set; }
     }
 
-    public class CloseApproachData
-    {
-        public string close_approach_date { get; set; }
-        public string close_approach_date_full { get; set; }
-        public object epoch_date_close_approach { get; set; }
-        public RelativeVelocity relative_velocity { get; set; }
-        public MissDistance miss_distance { get; set; }
-        public string orbiting_body { get; set; }
-    }
-
-    public class OrbitClass
-    {
-        public string orbit_class_type { get; set; }
-        public string orbit_class_description { get; set; }
-        public string orbit_class_range { get; set; }
-    }
-
-    public class OrbitalData
-    {
-        public string orbit_id { get; set; }
-        public string orbit_determination_date { get; set; }
-        public string first_observation_date { get; set; }
-        public string last_observation_date { get; set; }
-        public int data_arc_in_days { get; set; }
-        public int observations_used { get; set; }
-        public string orbit_uncertainty { get; set; }
-        public string minimum_orbit_intersection { get; set; }
-        public string jupiter_tisserand_invariant { get; set; }
-        public string epoch_osculation { get; set; }
-        public string eccentricity { get; set; }
-        public string semi_major_axis { get; set; }
-        public string inclination { get; set; }
-        public string ascending_node_longitude { get; set; }
-        public string orbital_period { get; set; }
-        public string perihelion_distance { get; set; }
-        public string perihelion_argument { get; set; }
-        public string aphelion_distance { get; set; }
-        public string perihelion_time { get; set; }
-        public string mean_anomaly { get; set; }
-        public string mean_motion { get; set; }
-        public string equinox { get; set; }
-        public OrbitClass orbit_class { get; set; }
-    }
-
-    public class NearEarthObject
-    {
-        public Links links { get; set; }
-        public string id { get; set; }
-        public string neo_reference_id { get; set; }
-        public string name { get; set; }
-        public string name_limited { get; set; }
-        public string designation { get; set; }
-        public string nasa_jpl_url { get; set; }
-        public double absolute_magnitude_h { get; set; }
-        public EstimatedDiameter estimated_diameter { get; set; }
-        public bool is_potentially_hazardous_asteroid { get; set; }
-        public List<CloseApproachData> close_approach_data { get; set; }
-        public OrbitalData orbital_data { get; set; }
-        public bool is_sentry_object { get; set; }
-    }
-
-    public class AsteroidsRoot
-    {
-        public Links links { get; set; }
-        public Page page { get; set; }
-        public List<NearEarthObject> near_earth_objects { get; set; }
-    }
-
-    public class Asteroid
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-        public double absolute_magnitude_h { get; set; }
-        public string designation { get; set; }
-        public bool is_potentially_hazardous_asteroid { get; set; }
-        public Kilometers kilometers { get; set; }
-
-        public Asteroid(string id, string name, double absolute_magnitude_h, string designation, bool is_potentially_hazardous_asteroid, Kilometers kilometers)
-        {
-            this.id = id;
-            this.name = name;
-            this.absolute_magnitude_h = absolute_magnitude_h;
-            this.designation = designation;
-            this.is_potentially_hazardous_asteroid = is_potentially_hazardous_asteroid;
-            this.kilometers = kilometers;
-        }
-
-    }
+    public enum OrbitingBody { Earth };
 }
+
+
+
+
+    //public class Asteroid
+    //{
+    //    public string id { get; set; }
+    //    public string name { get; set; }
+    //    public double absolute_magnitude_h { get; set; }
+    //    public string designation { get; set; }
+    //    public bool is_potentially_hazardous_asteroid { get; set; }
+    //    public Meters Meters { get; set; }
+
+    //    public Asteroid(string id, string name, double absolute_magnitude_h, bool is_potentially_hazardous_asteroid, Meters Meters)
+    //    {
+    //        this.id = id;
+    //        this.name = name;
+    //        this.absolute_magnitude_h = absolute_magnitude_h;
+    //        this.designation = designation;
+    //        this.is_potentially_hazardous_asteroid = is_potentially_hazardous_asteroid;
+    //        this.Meters = Meters;
+    //    }
+    //}
+
 

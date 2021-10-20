@@ -13,18 +13,7 @@ namespace NASA.ViewModels
     {
         public SolarSystemModel SolarSystemModel { get; set; }
 
-        public SolarSystemVM()
-        {
-            SolarSystemModel = new SolarSystemModel();
-            getAllPlanets();
-        }
-
         private ObservableCollection<Planet> _planets;
-        async public void getAllPlanets()
-        {
-            Planets = await Task.Run(() => SolarSystemModel.getAllPlanets());
-            SelectedPlanet = Planets[0];
-        }
         public ObservableCollection<Planet> Planets
         {
             get
@@ -44,13 +33,23 @@ namespace NASA.ViewModels
             get
             {
                 return _selectedPlanet;
-;
             }
             set
             {
                 _selectedPlanet = value;
                 OnPropertyChanged("SelectedPlanet");
             }
+        }
+        public SolarSystemVM()
+        {
+            SolarSystemModel = new SolarSystemModel();
+            getAllPlanets();
+        }
+
+        async public void getAllPlanets()
+        {
+            Planets = await Task.Run(() => SolarSystemModel.getAllPlanets());
+            SelectedPlanet = Planets[0];
         }
 
     }

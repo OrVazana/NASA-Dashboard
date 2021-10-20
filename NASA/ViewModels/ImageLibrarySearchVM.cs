@@ -47,8 +47,16 @@ namespace NASA.ViewModels
                 Count = libraryImages.Count;
             }
         }
-        //public NotifyTaskCompletion<List<Item>> libraryImages { get; set; }
-
+        private bool imagga=false;
+        public bool Imagga
+        {
+            get { return imagga; }
+            set
+            {
+                imagga = value;
+                OnPropertyChanged("Imagga");
+            }
+        }
         public ImageLibrarySearchVM()
         {
             ImageLibrarySearchModel = new ImageLibrarySearchModel();
@@ -60,7 +68,7 @@ namespace NASA.ViewModels
             LibraryImages = new ObservableCollection<Item>();
             try
             {
-               LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(search));
+               LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(search,imagga));
             }
             catch (Exception)
             {

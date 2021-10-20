@@ -15,6 +15,7 @@ namespace NASA.ViewModels
         public AsteroidsModel AsteroidsModel { get; set; }
         public AsteroidsModel CurrentM { get; set; }
 
+        #region spinner
         private bool spinner;
         public bool Spinner
         {
@@ -25,7 +26,9 @@ namespace NASA.ViewModels
                 OnPropertyChanged("Spinner");
             }
         }
+        #endregion
 
+        #region count
         private int count;
         public int Count
         {
@@ -36,8 +39,11 @@ namespace NASA.ViewModels
                 OnPropertyChanged("Count");
             }
         }
-        private ObservableCollection<Asteroid> asteroidData;
-        public ObservableCollection<Asteroid> AsteroidData
+        #endregion
+
+        #region ObservableCollection<NEO> asteroidData
+        private ObservableCollection<NEO> asteroidData;
+        public ObservableCollection<NEO> AsteroidData
         {
             get { return asteroidData; }
             set
@@ -47,8 +53,10 @@ namespace NASA.ViewModels
                 Count = asteroidData.Count;
             }
         }
+        #endregion
 
-        private bool isDanger;
+        #region isDanger
+        private bool isDanger=false;
         public bool IsDanger
         {
             get { return isDanger; }
@@ -58,6 +66,8 @@ namespace NASA.ViewModels
                 OnPropertyChanged("IsDanger");
             }
         }
+        #endregion
+
         private double distance;
         public double Distance
         {
@@ -66,10 +76,13 @@ namespace NASA.ViewModels
             {
                 distance = value;
                 OnPropertyChanged("Distance");
+                if (value.Equals(string.Empty))
+                    distance = -1;
             }
         }
-        private double time;
-        public double Time
+
+        private string time;
+        public string Time
         {
             get { return time; }
             set
@@ -82,13 +95,13 @@ namespace NASA.ViewModels
         public AsteroidsVM()
         {
             AsteroidsModel = new AsteroidsModel();
-            AsteroidData = new ObservableCollection<Asteroid>();
+            AsteroidData = new ObservableCollection<NEO>();
             doWork();
         }
         async public void doWork()
         {
             Spinner = true;
-            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(isDanger,time));
+            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(isDanger,distance));
             Spinner = false;
         }
         //async public void search(string search)

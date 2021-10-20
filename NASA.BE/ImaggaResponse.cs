@@ -14,7 +14,7 @@ namespace NASA.BE
     public class Tag
     {
         public double confidence { get; set; }
-        public Tag tag { get; set; }
+        public Tag2 tag { get; set; }
     }
 
     public class Result

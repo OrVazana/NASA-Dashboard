@@ -10,14 +10,13 @@ namespace NASA.DAL.Migrations
                 name: "Planets",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    varchar50 = table.Column<string>(name: "varchar(50", type: "nvarchar(max)", nullable: false),
-                    varchar200 = table.Column<string>(name: "varchar(200", type: "nvarchar(max)", nullable: false),
-                    varchar100 = table.Column<string>(name: "varchar(100", type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageSource = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Planets", x => x.id);
+                    table.PrimaryKey("PK_Planets", x => x.Name);
                 });
         }
 

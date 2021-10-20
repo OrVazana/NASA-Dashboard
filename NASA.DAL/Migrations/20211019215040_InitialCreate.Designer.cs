@@ -9,7 +9,7 @@ using NASA.DAL;
 namespace NASA.DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20211019082508_InitialCreate")]
+    [Migration("20211019215040_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,25 +22,16 @@ namespace NASA.DAL.Migrations
 
             modelBuilder.Entity("NASA.BE.Planet", b =>
                 {
-                    b.Property<int>("id")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("varchar(200");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageSource")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("varchar(100");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("varchar(50");
-
-                    b.HasKey("id");
+                    b.HasKey("Name");
 
                     b.ToTable("Planets");
                 });

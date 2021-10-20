@@ -11,9 +11,9 @@ namespace NASA.DAL.Interfaces
         public Task<TodayPhoto> GetTodayPhoto();
         //library api
         public Task<List<Item>> GetLibrarySearchResult(string search);
-        public Task<List<Asteroid>> GetAsteroidsFilteredResult();
+        public Task<List<NEO>> GetAsteroidsFilteredResult();
 
-        public Task<ObservableCollection<Planet>> GetAllPlanets();
+        public Task<List<Planet>> GetAllPlanets();
         //Task<string> GetResponseJSon(string apiUrl, string apiKey);
     }
 }
