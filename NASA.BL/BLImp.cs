@@ -101,14 +101,14 @@ namespace NASA.BL
             if(isDanger)
             {
                 var result=from astroid in list
-                where astroid.IsPotentiallyHazardousAsteroid == true
+                where astroid.is_potentially_hazardous_asteroid == true
                 select astroid;
                 filterd= result.ToList();
             }
             if (Distance>0)
             {
                 var result = from astroid in list
-                             where astroid.EstimatedDiameter.Meters.EstimatedDiameterMin>=Distance
+                             where astroid.estimated_diameter.meters.estimated_diameter_min>=Distance
                              select astroid;
                 filterd = filterd.Where(i => list.Contains(i)).ToList();
             }
