@@ -16,6 +16,12 @@
                 <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Red" />
             </Style.Resources>
         </Style>
+        <Style x:Key="CustomMaterialDesignFloatingHintTextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}" TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <Color x:Key="PrimaryHueMidBrushColor">LightGreen</Color>
+                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="LightGreen" />
+            </Style.Resources>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
@@ -41,11 +47,11 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <CheckBox Grid.Column="1" Margin="5,0,0,0" Content="Is Hazardous" FontSize="14" HorizontalAlignment="Center" IsChecked="{Binding IsDanger, Mode=TwoWay}" Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"/>
+            <CheckBox Grid.Column="1" Margin="5,0,0,0" Content="Is Hazardous" FontSize="14" HorizontalAlignment="Center" IsChecked="{Binding IsDanger, Mode=TwoWay}" Style="{StaticResource MaterialDesignFilterChipAccentOutlineCheckBox}"/>
 
             <Border Grid.Column="2" Width="1" Margin="10" Background="#8888"/>
 
-            <TextBox Grid.Column="3" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Diameter, Mode=TwoWay}" VerticalAlignment="Center"
+            <TextBox Grid.Column="3" Style="{StaticResource CustomMaterialDesignFloatingHintTextBox}" Text="{Binding Diameter, Mode=TwoWay}" VerticalAlignment="Center"
                         materialDesign:TextFieldAssist.HasClearButton="False">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
@@ -57,17 +63,12 @@
 
             <Border Grid.Column="4" Width="1" Margin="10" Background="#8888"/>
 
-            <StackPanel Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Start date:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay}" Grid.Column="5" />
-            </StackPanel>
+            <DatePicker Grid.Column="5" SelectedDate="{Binding StartDate, Mode=TwoWay}" materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
 
             <Border Grid.Column="6" Width="1" Margin="10" Background="#8888"/>
 
-            <StackPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="End date:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay}" Grid.Column="5" />
-            </StackPanel>
+            <DatePicker Grid.Column="7" SelectedDate="{Binding EndDate, Mode=TwoWay}"  materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
             <Border Grid.Column="8" Width="1" Margin="10" Background="#8888"/>
 
