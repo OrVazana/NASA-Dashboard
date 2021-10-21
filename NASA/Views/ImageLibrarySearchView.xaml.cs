@@ -10,17 +10,10 @@ namespace NASA.Views
     /// </summary>
     public partial class ImageLibrarySearchView : UserControl
     {
-        ImageLibrarySearchVM Current { get; set; }
         public ImageLibrarySearchView()
         {
             InitializeComponent();
-            Current = new ImageLibrarySearchVM();
-            DataContext = Current;
-        }
-        private void searchButton_Click(object sender, RoutedEventArgs e)
-        {
-            string search = searchBox.Text;
-            Current.search(search);
+            DataContext = new ImageLibrarySearchVM();
         }
     }
 }

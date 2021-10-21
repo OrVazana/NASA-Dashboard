@@ -1,19 +1,20 @@
 ﻿using NASA.BE;
+using NASA.Commands;
 using NASA.Models;
-using NASA.Tools;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace NASA.ViewModels
 {
     public class AsteroidsVM :BaseVM
     {
+        public ICommand FilterButtonCommand { get; set; }
+        public ICommand ResetButtonCommand { get; set; }
+
         public AsteroidsModel AsteroidsModel { get; set; }
-        public AsteroidsModel CurrentM { get; set; }
 
         #region spinner
         private bool spinner;
@@ -67,55 +68,102 @@ namespace NASA.ViewModels
             }
         }
         #endregion
-
-        private double distance;
-        public double Distance
+        
+        #region diameter
+        private double diameter;
+        public double Diameter
         {
-            get { return distance; }
+            get { return diameter; }
             set
             {
-                distance = value;
-                OnPropertyChanged("Distance");
-                if (value.Equals(string.Empty))
-                    distance = -1;
+                //if (value.Equals(string.Empty))
+                //    diameter =0;
+                //else
+                diameter = value;
+                OnPropertyChanged("diameter");
             }
         }
+        #endregion
 
-        private string time;
-        public string Time
+        #region startDate
+        private DateTime startDate=DateTime.Today.AddDays(-7);
+        public DateTime StartDate
         {
-            get { return time; }
+            get { return startDate; }
             set
             {
-                time = value;
-                OnPropertyChanged("Time");
+                if (validateDate(value) && (value <= EndDate))
+                {
+                    startDate = value;
+                }
+                else
+                {
+                    startDate = DateTime.Today.AddDays(-7);
+                }
+                OnPropertyChanged(nameof(StartDate));
             }
         }
+        #endregion
 
+        #region endDate
+        private DateTime endDate=DateTime.Today;
+        public DateTime EndDate
+        {
+            get { return endDate; }
+            set
+            {
+                if (validateDate(value) && value >= startDate)
+                {
+                    endDate = value; 
+                }
+                else
+                {
+                    endDate = DateTime.Today;
+                }
+                OnPropertyChanged(nameof(EndDate));
+
+            }
+        }
+        #endregion
+        
         public AsteroidsVM()
         {
             AsteroidsModel = new AsteroidsModel();
             AsteroidData = new ObservableCollection<NEO>();
-            doWork();
+            reset();
+            FilterButtonCommand = new RelayCommand(o => FilterButtonClick("FilterButton"));
+            ResetButtonCommand = new RelayCommand(o => ResetButtonClick("ResetButton"));
+
         }
-        async public void doWork()
+        #region Command Click Functions
+        private void FilterButtonClick(string v)
+        {
+            Filter();
+        }
+
+        private void ResetButtonClick(string v)
+        {
+            reset();
+        }
+        #endregion
+
+        async public void Filter()
         {
             Spinner = true;
-            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(isDanger,distance));
+            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(IsDanger,diameter,StartDate,EndDate));
             Spinner = false;
         }
-        //async public void search(string search)
-        //{
-        //    LibraryImages = new ObservableCollection<libraryImage>();
-        //    try
-        //    {
-        //        LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(search));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //handle the exception
-        //        //...............
-        //    }
-        //}
+        async public void reset()
+        {
+            StartDate = DateTime.Now.AddDays(-7);
+            endDate = DateTime.Now;
+            Diameter = 0;
+            IsDanger = false;
+            Spinner = true;
+            AsteroidData = await Task.Run(() => AsteroidsModel.GetAsteroidsFilteredResult(IsDanger, diameter, StartDate, EndDate,true));
+            Spinner = false;
+        }
+
+        public bool validateDate(DateTime value) => value <= DateTime.Today && value >= DateTime.Today.AddDays(-7);
     }
 }

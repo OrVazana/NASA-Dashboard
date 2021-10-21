@@ -7,11 +7,13 @@ using NASA.DAL.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Diagnostics;
 
 namespace NASA.DAL
 {
     public class Repository : IRepository
     {
+        #region init
         //private bool flag = false;
         public Repository()
         {
@@ -33,6 +35,16 @@ namespace NASA.DAL
             //    flag = true;
             //}
         }
+        
+        public void InitDB()
+        {
+            var context = new DB();
+            context.Planets.ToList();
+            Trace.WriteLine("im here");
+        }
+        #endregion
+
+        #region SolarSystem
         public async void AddPlanet(Planet p)
         {
             await using (var context = new DB())
@@ -50,8 +62,9 @@ namespace NASA.DAL
                 return context.Planets.ToList();
             }
         }
+        #endregion
 
-        //Apod - Astronomy Picture of the Day
+        #region Apod - Astronomy Picture of the Day
         public async Task<TodayPhoto> GetTodayPhoto()
         {
             var url = "https://api.nasa.gov/planetary/apod?api_key=WsYeuuaywUAJILhko8CfVQwj38v867sG32f8QseL";
@@ -71,8 +84,9 @@ namespace NASA.DAL
                 }
             }
         }
+        #endregion
 
-        //NASA Image and Video Library
+        #region Image and Video Library
         public async Task<List<Item>> GetLibrarySearchResult(string search)
         {
             var url = "https://images-api.nasa.gov/search?media_type=image&q=" + search;
@@ -91,9 +105,10 @@ namespace NASA.DAL
                     return null;
             }
         }
-
-        #region Astroids
-        public async Task<List<NEO>> GetAsteroidsFilteredResult()
+        #endregion
+        
+        #region Astroids neo-ws
+        public async Task<List<NEO>> GetAsteroidsResult()
         {
             DateTime endDate = DateTime.Today;
             DateTime startDate = DateTime.Today.AddDays(-7);
@@ -111,7 +126,7 @@ namespace NASA.DAL
                     string strResult = await response.Content.ReadAsStringAsync();
                     AsteroidRoot myDeserializedClass = JsonConvert.DeserializeObject<AsteroidRoot>(strResult);
                     List<NEO> items = new List<NEO>();
-                    foreach (var listNeo in myDeserializedClass.NearEarthObjects)
+                    foreach (var listNeo in myDeserializedClass.near_earth_objects)
                     {
                         foreach (var item in listNeo.Value)
                         {
@@ -124,6 +139,8 @@ namespace NASA.DAL
                     return null;
             }
         }
+
+       
         #endregion
     }
 }

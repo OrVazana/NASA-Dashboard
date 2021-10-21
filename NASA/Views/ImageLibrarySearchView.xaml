@@ -47,8 +47,8 @@
                          materialDesign:TextFieldAssist.UnderlineCornerRadius="100"
                                  HorizontalContentAlignment="Center" 
                                  Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
-                    <Button x:Name="searchButton" Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"
-                       Click="searchButton_Click" materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource MaterialDesignFlatLightButton}">
+                    <Button x:Name="searchButton" Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Search" IsDefault="True"
+                        Command="{Binding ButtonCommand}" materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource MaterialDesignFlatLightButton}">
                         <materialDesign:PackIcon Kind="Search" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Button>
                 </Grid>
