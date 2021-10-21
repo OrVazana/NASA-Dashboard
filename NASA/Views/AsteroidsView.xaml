@@ -9,75 +9,102 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              FontFamily="{materialDesign:MaterialDesignFont}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="CustomMaterialDesignFlatButton" BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Color x:Key="PrimaryHueMidBrushColor">Red</Color>
+                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="Red" />
+            </Style.Resources>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="14*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="16*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" BorderBrush="{DynamicResource AttentionToActionBrush}" BorderThickness="1" CornerRadius="10" Width="600" VerticalAlignment="Center" Margin="10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="1"  BorderThickness="0" VerticalAlignment="Center"  FontSize="14"
-                         materialDesign:HintAssist.Hint="Search for astroid Data" 
-                         materialDesign:HintAssist.HintOpacity="0.6"
-                         materialDesign:TextFieldAssist.UnderlineCornerRadius="100"
-                                 HorizontalContentAlignment="Center" 
-                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Grid.Column="2" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Home"  materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource MaterialDesignFlatLightButton}">
-                    <materialDesign:PackIcon Kind="Search" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                </Button>
-            </Grid>
-        </Border>
-        <Grid Grid.Row="1">
+
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="is danger:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <CheckBox Margin="5,0,0,0" IsChecked="{Binding isDanger, Mode=TwoWay}" />
+
+            <CheckBox Grid.Column="1" Margin="5,0,0,0" Content="Is Hazardous" FontSize="14" HorizontalAlignment="Center" IsChecked="{Binding IsDanger, Mode=TwoWay}" Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"/>
+
+            <Border Grid.Column="2" Width="1" Margin="10" Background="#8888"/>
+
+            <TextBox Grid.Column="3" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Diameter, Mode=TwoWay}" VerticalAlignment="Center"
+                        materialDesign:TextFieldAssist.HasClearButton="False">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Diameter" />
+                        <TextBlock Text="Diameter" FontSize="15"/>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+
+            <Border Grid.Column="4" Width="1" Margin="10" Background="#8888"/>
+
+            <StackPanel Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Start date:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay}" Grid.Column="5" />
             </StackPanel>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Grid.Column="2" Content="distance:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding distance, Mode=TwoWay}" Grid.Column="3" materialDesign:HintAssist.Hint="enter distance" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <Border Grid.Column="6" Width="1" Margin="10" Background="#8888"/>
+
+            <StackPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="End date:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay}" Grid.Column="5" />
             </StackPanel>
-            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Grid.Column="4" Content="date:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <DatePicker SelectedDate="{Binding time, Mode=TwoWay}" Grid.Column="5" />
-            </StackPanel>
+
+            <Border Grid.Column="8" Width="1" Margin="10" Background="#8888"/>
+
+            <Button Grid.Column="9" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding FilterButtonCommand}" ToolTip="Filter results"  materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource MaterialDesignFlatLightButton}">
+                <materialDesign:PackIcon Kind="Filter" Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Button>
+
+            <Button Grid.Column="10" Name="resetButton"  BorderBrush="{Binding ValidationAssist.Background}" Background="{Binding ValidationAssist.Background}"  Command="{Binding ResetButtonCommand}" ToolTip="Reset results" materialDesign:ButtonAssist.CornerRadius="7" Style="{StaticResource CustomMaterialDesignFlatButton}" >
+                <materialDesign:PackIcon Kind="Restart" Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button>
         </Grid>
-        <materialDesign:Card Grid.Row="2" Margin="10">
+
+        <materialDesign:Card Grid.Row="1" Margin="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding AsteroidData}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="id" Binding="{Binding id}"/>
-                        <DataGridTextColumn Header="name" Binding="{Binding name}"/>
-                        <DataGridTextColumn Header="absolute magnitude" Binding="{Binding absolute_magnitude_h}"/>
-                        <DataGridTextColumn Header="is potentially hazardous" Binding="{Binding is_potentially_hazardous_asteroid}"/>
-                        <DataGridTextColumn Header="min estimated diameter" Binding="{Binding kilometers.estimated_diameter_min}"/>
-                        <DataGridTextColumn Header="max estimated diameter" Binding="{Binding kilometers.estimated_diameter_max}"/>
+                        <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="Is potentially hazardous" Binding="{Binding is_potentially_hazardous_asteroid}"/>
+                        <DataGridTextColumn Header="Close approach date" Binding="{Binding close_approach_data[0].close_approach_date}"/>
+                        <DataGridTextColumn Header="Miss distance(km)" Binding="{Binding close_approach_data[0].miss_distance.kilometers}"/>
+                        <DataGridTextColumn Header="Min diameter (m)" Binding="{Binding estimated_diameter.meters.estimated_diameter_min}"/>
+                        <DataGridTextColumn Header="Max diameter(m)" Binding="{Binding estimated_diameter.meters.estimated_diameter_max}"/>
+                        <DataGridTextColumn Header="Absolute magnitude" Binding="{Binding absolute_magnitude_h}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <ProgressBar x:Name="ProgressBar" Margin="0,100" Visibility="{Binding Spinner, Mode=Default,Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource MaterialDesignCircularProgressBar}"  Value="0" IsIndeterminate="True" />
             </Grid>
         </materialDesign:Card>
 
-        <TextBlock Grid.Row="3" VerticalAlignment="Center"  Margin="100,0,0,0"  FontSize="16">
+        <TextBlock Grid.Row="2" VerticalAlignment="Stretch"  Margin="100,0,0,0"  FontSize="16">
             <Run Text="total: "/>
             <Run Text="{Binding Count, Mode=OneWay}"/>
         </TextBlock>
-
+        <materialDesign:Snackbar x:Name="SnackbarThree" MessageQueue="{materialDesign:MessageQueue}" />
     </Grid>
 </UserControl>

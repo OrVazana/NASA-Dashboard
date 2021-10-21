@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace NASA.BL
 {
@@ -94,33 +95,49 @@ namespace NASA.BL
         #endregion
 
         #region AstroidData
-        public List<NEO> GetAsteroidsFilteredResult(bool isDanger,double Distance=-1, DateTime? start = null, DateTime? end = null)
+        public List<NEO> GetAsteroidsFilteredResult(bool isDanger, double diameter, DateTime start, DateTime end, bool reset=false)
         {
-            var list=IRepository.GetAsteroidsFilteredResult().Result;
-            List<NEO> filterd = new();
-            if(isDanger)
+            var list=IRepository.GetAsteroidsResult().Result;
+            if (reset)
             {
-                var result=from astroid in list
-                where astroid.IsPotentiallyHazardousAsteroid == true
-                select astroid;
-                filterd= result.ToList();
+                return list;
             }
-            if (Distance>0)
+            else
             {
-                var result = from astroid in list
-                             where astroid.EstimatedDiameter.Meters.EstimatedDiameterMin>=Distance
-                             select astroid;
-                filterd = filterd.Where(i => list.Contains(i)).ToList();
-            }
-            if (start!=null)
-            {
-                //var result = from astroid in list
-                //             where astroid.
-                //             select astroid;
-                //filterd = result.ToList();
+                var result = from item in list
+                             where item.is_potentially_hazardous_asteroid == isDanger
+                             where item.estimated_diameter.meters.estimated_diameter_min >= diameter
+                             where DateTime.Parse(item.close_approach_data[0].close_approach_date) >= start && DateTime.Parse(item.close_approach_data[0].close_approach_date) <= end
+                             select item;
+                return new List<NEO>(result.ToList());
             }
 
-            return filterd ;
+            //    var result=from astroid in list
+            //    where astroid.is_potentially_hazardous_asteroid == true
+            //    select astroid;
+            //    filterd= result.ToList();
+            //}
+            //if (Distance>0)
+            //{
+            //    var result = from astroid in list
+            //                 where astroid.estimated_diameter.meters.estimated_diameter_min>=Distance
+            //                 select astroid;
+            //    filterd = filterd.Where(i => list.Contains(i)).ToList();
+            //}
+            //if (start!=null)
+            //{
+            //    //var result = from astroid in list
+            //    //             where astroid.
+            //    //             select astroid;
+            //    //filterd = result.ToList();
+            //}
+
+            //return filterd;
+        }
+
+        public void InitDB()
+        {
+            IRepository.InitDB();
         }
         #endregion
     }

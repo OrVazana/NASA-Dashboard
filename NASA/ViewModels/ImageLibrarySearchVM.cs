@@ -1,4 +1,5 @@
 ﻿using NASA.BE;
+using NASA.Commands;
 using NASA.Models;
 using NASA.Tools;
 using System;
@@ -6,16 +7,21 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace NASA.ViewModels
 {
     public class ImageLibrarySearchVM : BaseVM
     {
+        public ICommand ButtonCommand { get; set; }
+
         public ImageLibrarySearchModel ImageLibrarySearchModel { get; set; }
         public ImageLibrarySearchModel CurrentM { get; set; }
         
         public NotifyTaskCompletion<List<Item>> LibraryImages1 { get; set; }
         
+        #region spinner
         private bool spinner;
         public bool Spinner
         {
@@ -26,6 +32,9 @@ namespace NASA.ViewModels
                 OnPropertyChanged("Spinner");
             }
         }
+        #endregion
+
+        #region count
         private int count;
         public int Count
         {
@@ -36,6 +45,9 @@ namespace NASA.ViewModels
                 OnPropertyChanged("Count");
             }
         }
+        #endregion
+
+        #region ObservableCollection<Item> libraryImages
         private ObservableCollection<Item> libraryImages;
         public ObservableCollection<Item> LibraryImages
         {
@@ -47,6 +59,9 @@ namespace NASA.ViewModels
                 Count = libraryImages.Count;
             }
         }
+        #endregion
+
+        #region imaggaCheckBox
         private bool imagga=false;
         public bool Imagga
         {
@@ -54,21 +69,43 @@ namespace NASA.ViewModels
             set
             {
                 imagga = value;
-                OnPropertyChanged("Imagga");
+                OnPropertyChanged(nameof(Imagga));
             }
         }
+        #endregion
+
+        #region searchText
+        private string searchText;
+        public string SearchText
+        {
+            get{ return searchText; }
+            set
+            {
+                searchText = value;
+                OnPropertyChanged(nameof(SearchText));
+            }
+        }
+        #endregion
+
+        #region constractor
         public ImageLibrarySearchVM()
         {
             ImageLibrarySearchModel = new ImageLibrarySearchModel();
+            ButtonCommand = new RelayCommand(o => SearchButtonClick("SearchButton"));
         }
+        #endregion
 
-        async public void search(string search)
+        #region functions
+
+        private void SearchButtonClick(object sender) => Search();
+
+        async private void Search()
         {
             Spinner = true;
             LibraryImages = new ObservableCollection<Item>();
             try
             {
-               LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(search,imagga));
+               LibraryImages = await Task.Run(() => ImageLibrarySearchModel.GetLibrarySearchResult(SearchText,imagga));
             }
             catch (Exception)
             {
@@ -77,5 +114,6 @@ namespace NASA.ViewModels
             }
             Spinner = false;
         }
+        #endregion
     }
 }

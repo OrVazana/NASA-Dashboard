@@ -12,7 +12,8 @@ namespace NASA.BL.Interfaces
     {
         public Task<TodayPhoto> getTodayPhoto();
         public List<Item> GetLibrarySearchResult(string search,bool imagga);
-        public List<NEO> GetAsteroidsFilteredResult(bool isDanger,double Distance , DateTime? start = null, DateTime? end = null);
+        public List<NEO> GetAsteroidsFilteredResult(bool isDanger,double diameter, DateTime start, DateTime end,bool reset=false);
+        void InitDB();
         public Task<List<Planet>> getAllPlanets();
     }
 }

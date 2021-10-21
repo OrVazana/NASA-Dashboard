@@ -1,47 +1,155 @@
 ﻿<UserControl x:Class="NASA.Views.HomeView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NASA.Views"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-            FontFamily="{materialDesign:MaterialDesignFont}"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:NASA.Views"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                FontFamily="{materialDesign:MaterialDesignFont}"
+                mc:Ignorable="d" 
+                d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid Margin="50,30" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="10*" />
-                <ColumnDefinition Width="10*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" FontStretch="UltraExpanded" FontWeight="Medium" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" >
+                <RowDefinition Height="15*" />
+                </Grid.RowDefinitions>
+        <Viewbox  HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="0,20"  Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Panel.ZIndex="1">
+            <TextBlock  FontWeight="SemiBold" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" >
                 Our project options:
             </TextBlock>
-            <materialDesign:Card Background="Aqua"  Grid.Column="1" Grid.Row="2">
+        </Viewbox>
+        <!--Apod-->
+        <Grid Grid.Column="0" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/APOD.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Rectangle Grid.RowSpan="5" Stretch="Fill" Fill="Black" Opacity="0.4"/>
 
-            </materialDesign:Card>
-            <materialDesign:Card Background="Violet"  Grid.Column="2" Grid.Row="2">
-
-            </materialDesign:Card>
-            <materialDesign:Card Background="BlueViolet"  Grid.Column="1" Grid.Row="3">
-
-            </materialDesign:Card>
-            <materialDesign:Card Background="Red"  Grid.Column="2" Grid.Row="3">
-
-            </materialDesign:Card>
-
-
+            <Viewbox  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="100" FontWeight="Bold">
+                    APOD
+                    </TextBlock>
+                    <TextBlock Grid.Row="2" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="Each day a different image"/>
+                    <TextBlock Grid.Row="3" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="or photograph of our"/>
+                    <TextBlock Grid.Row="4" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="fascinating universe is featured."/>
+                </Grid>
+            </Viewbox>
         </Grid>
+
+        <!--SolarSystem-->
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/SolarSystem.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Rectangle Grid.RowSpan="5" Stretch="Fill" Fill="Black" Opacity="0.4"/>
+
+            <Viewbox  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="80" FontWeight="Bold">
+                    Solar
+                    </TextBlock>
+                    <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="80" FontWeight="Bold">
+                    System
+                    </TextBlock>
+                    <TextBlock Grid.Row="3" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="a beautiful and interactive"/>
+                    <TextBlock Grid.Row="4" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="view of our solar systemation."/>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
+        <!--Image Library + Imagga-->
+        <Grid Grid.Column="2" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Library.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Rectangle Grid.RowSpan="5" Stretch="Fill" Fill="Black" Opacity="0.4"/>
+
+            <Viewbox  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="70" FontWeight="Bold">
+                    NASA
+                    </TextBlock>
+                    <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="70" FontWeight="Bold">
+                    Image
+                    </TextBlock>
+                    <TextBlock Grid.Row="3" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="70" FontWeight="Bold">
+                    Library
+                    </TextBlock>
+                    <TextBlock Grid.Row="4" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="The images.nasa.gov "/>
+                    <TextBlock Grid.Row="5" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="API is organized around REST."/>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
+        <!--Asteroid data-->
+        <Grid Grid.Column="4" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Asteroids_Wallpaper.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.RowSpan="2" Stretch="Fill" Fill="Black" Opacity="0.4"/>
+
+            <Viewbox  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="50,0" HorizontalAlignment="Center" FontSize="100" FontWeight="Bold">
+                    Asteroids
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="3" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="NeoWs is a RESTful web service"/>
+                    <TextBlock Grid.Row="4" FontSize="30" Foreground="White"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="50,0"
+                           Text="for near earth Asteroid information."/>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
     </Grid>
-</UserControl>
+    </UserControl>
