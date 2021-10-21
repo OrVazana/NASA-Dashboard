@@ -9,7 +9,7 @@ using NASA.DAL;
 namespace NASA.DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20211019215040_InitialCreate")]
+    [Migration("20211020090622_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
