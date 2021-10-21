@@ -40,7 +40,6 @@ namespace NASA.DAL
         {
             var context = new DB();
             context.Planets.ToList();
-            Trace.WriteLine("im here");
         }
         #endregion
 

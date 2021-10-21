@@ -30,8 +30,6 @@ namespace NASA.Commands
                 viewModel.SelectedViewModel = new HomeVM();
             else if (parameter.ToString() == "about")
                 viewModel.SelectedViewModel = new AboutUsVM();
-            else if(parameter.ToString() == "contact")
-                viewModel.SelectedViewModel = new ContactUsVM();
             else if(parameter.ToString()== "todayPhoto")
                 viewModel.SelectedViewModel = new TodayPhotoVM();
             else if (parameter.ToString() == "solarSystem")

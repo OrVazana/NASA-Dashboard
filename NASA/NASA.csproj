@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>nasa.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,7 @@
     <None Remove="Images\mars.png" />
     <None Remove="Images\Mercury.png" />
     <None Remove="Images\nasa-logo.png" />
+    <None Remove="Images\nasa.ico" />
     <None Remove="Images\NEPTUNE.png" />
     <None Remove="Images\Profile_Or.jpg" />
     <None Remove="Images\Profile_Refael.png" />
@@ -48,12 +50,12 @@
 
   <ItemGroup>
     <Resource Include="Images\Earth.png" />
-    <Resource Include="Images\icon.ico" />
     <Resource Include="Images\Jupiter.png" />
     <Resource Include="Images\Library.jpg" />
     <Resource Include="Images\mars.png" />
     <Resource Include="Images\Mercury.png" />
     <Resource Include="Images\nasa-logo.png" />
+    <Resource Include="Images\nasa.ico" />
     <Resource Include="Images\NEPTUNE.png" />
     <Resource Include="Images\Profile_Or.jpg" />
     <Resource Include="Images\Profile_Refael.png" />

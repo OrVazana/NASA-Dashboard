@@ -97,11 +97,6 @@ namespace NASA.BL
         #region AstroidData
         public List<NEO> GetAsteroidsFilteredResult(bool isDanger, double diameter, DateTime start, DateTime end, bool reset=false)
         {
-            Trace.WriteLine(isDanger);
-            Trace.WriteLine(diameter);
-            Trace.WriteLine("start: "+start.Date);
-            Trace.WriteLine("end: "+end);
-            Trace.WriteLine("reset: " + reset);
             var list=IRepository.GetAsteroidsResult().Result;
             if (reset)
             {

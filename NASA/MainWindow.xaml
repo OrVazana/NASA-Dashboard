@@ -9,7 +9,6 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Icon="Images/icon.ico"
         Title="Nasa" MinHeight="600" MinWidth="900" Height="600" Width="960" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" ResizeMode="CanResize" AllowsTransparency="False" >
     
     <WindowChrome.WindowChrome>
