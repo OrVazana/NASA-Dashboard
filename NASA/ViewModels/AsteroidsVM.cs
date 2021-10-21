@@ -86,7 +86,7 @@ namespace NASA.ViewModels
         #endregion
 
         #region startDate
-        private DateTime startDate=DateTime.Today.AddDays(-7);
+        private DateTime startDate;
         public DateTime StartDate
         {
             get { return startDate; }
@@ -106,7 +106,7 @@ namespace NASA.ViewModels
         #endregion
 
         #region endDate
-        private DateTime endDate=DateTime.Today;
+        private DateTime endDate;
         public DateTime EndDate
         {
             get { return endDate; }
@@ -125,7 +125,19 @@ namespace NASA.ViewModels
             }
         }
         #endregion
-        
+
+        private DateTime displayDateStart = DateTime.Today.AddDays(-7);
+        public DateTime DisplayDateStart
+        {
+            get { return displayDateStart; }
+        }
+
+        private DateTime displayDateEnd = DateTime.Today;
+        public DateTime DisplayDateEnd
+        {
+            get { return displayDateEnd; }
+        }
+
         public AsteroidsVM()
         {
             AsteroidsModel = new AsteroidsModel();
@@ -156,7 +168,7 @@ namespace NASA.ViewModels
         async public void reset()
         {
             StartDate = DateTime.Now.AddDays(-7);
-            endDate = DateTime.Now;
+            EndDate = DateTime.Now;
             Diameter = 0;
             IsDanger = false;
             Spinner = true;
