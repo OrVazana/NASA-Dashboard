@@ -6,13 +6,11 @@ namespace NASA.DAL
     public class DB : DbContext
     {
         public DbSet<Planet> Planets { get; set; }
-
-        public string DbPath { get; private set; }
-
         public DB()
         {
-        
+
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)
@@ -33,8 +31,5 @@ namespace NASA.DAL
                 new Planet() { Name = "Mercury", ImageSource = "/Images/Mercury.png", Description = "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets. It is named after the Roman god Mercurius (Mercury), god of commerce" },
                 new Planet() { Name = "Venus", ImageSource = "/Images/Venus_new.png", Description = "Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As the brightest natural object in Earth's night sky after the Moon, Venus can cast shadows and can be, on rare occasions, visible to the naked eye in broad daylight." });
         }
-        
-
-
     }
 }

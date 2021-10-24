@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using NASA.ViewModels;
 
 namespace NASA.Views

@@ -63,7 +63,7 @@
 
             <Border Grid.Column="4" Width="1" Margin="10" Background="#8888"/>
 
-            <DatePicker Grid.Column="5" SelectedDate="{Binding StartDate, Mode=TwoWay}" DisplayDateStart="{Binding DisplayDateStart, Mode=OneWay}" DisplayDateEnd="{Binding DisplayDateEnd, Mode=OneWay}" materialDesign:HintAssist.Hint="End Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            <DatePicker Grid.Column="5" SelectedDate="{Binding StartDate, Mode=TwoWay}" DisplayDateStart="{Binding DisplayDateStart, Mode=OneWay}" DisplayDateEnd="{Binding DisplayDateEnd, Mode=OneWay}" materialDesign:HintAssist.Hint="Start Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
 
             <Border Grid.Column="6" Width="1" Margin="10" Background="#8888"/>

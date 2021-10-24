@@ -5,9 +5,7 @@ using NASA.Tools;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace NASA.ViewModels

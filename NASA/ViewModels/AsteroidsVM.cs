@@ -4,7 +4,6 @@ using NASA.Models;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Diagnostics;
 using System.Collections.ObjectModel;
 
 namespace NASA.ViewModels
