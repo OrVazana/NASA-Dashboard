@@ -6,11 +6,8 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace NASA.BL
 {
@@ -107,32 +104,10 @@ namespace NASA.BL
                 var result = from item in list
                              where item.is_potentially_hazardous_asteroid == isDanger
                              where item.estimated_diameter.meters.estimated_diameter_min >= diameter
-                             where DateTime.Parse(item.close_approach_data[0].close_approach_date) >= start && DateTime.Parse(item.close_approach_data[0].close_approach_date) <= end
+                             where DateTime.Parse(item.close_approach_data[0].close_approach_date).Date >= start.Date && DateTime.Parse(item.close_approach_data[0].close_approach_date).Date <= end.Date
                              select item;
                 return new List<NEO>(result.ToList());
             }
-
-            //    var result=from astroid in list
-            //    where astroid.is_potentially_hazardous_asteroid == true
-            //    select astroid;
-            //    filterd= result.ToList();
-            //}
-            //if (Distance>0)
-            //{
-            //    var result = from astroid in list
-            //                 where astroid.estimated_diameter.meters.estimated_diameter_min>=Distance
-            //                 select astroid;
-            //    filterd = filterd.Where(i => list.Contains(i)).ToList();
-            //}
-            //if (start!=null)
-            //{
-            //    //var result = from astroid in list
-            //    //             where astroid.
-            //    //             select astroid;
-            //    //filterd = result.ToList();
-            //}
-
-            //return filterd;
         }
 
         public void InitDB()
